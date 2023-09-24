@@ -1,0 +1,31 @@
+﻿% Arquivo de Importação para Web
+% ------------------------------------------------------------------------
+% Campos: Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
+% Exemplo: C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
+% Áreas das Questões: Estrutura, CSS, HTML, PHP
+% ------------------------------------------------------------------------
+C01Q01«Marque todas a questões verdadeiras no que diz respeito a programação Web«Executada somente por um servidor.«Dividida obrigatoriamente em Cliente e Servidor«Pode ser utilizada com várias linguagens de programação e tecnologias.«E dependente do sistema operacional.«C«Estrutura«1
+C01Q02«Cite a diferença entre as aplicações Web e Desktop:«Aplicação Desktop envolve a execução em um navegador Web.«As aplicações Web só podem ser acessadas somente no computador onde estão instaladas.«As aplicações desktop geralmente possuem um desempenho melhor.«As aplicações Web são criadas somente para execuções em teste.«C«Estrutura«1
+C01Q03«Marque a relação correta:«HTML: Linguagem de marcação padrão para criar páginas web, usado para estruturar conteúdo no servidor Web.«CSS: Linguagem de programação permite implementar somente funcionalidades complexas em páginas Web.«JavaScript: Linguagem usada para descrever a aparência e formatação de um documento escrito em HTML.«PHP: Linguagem de script do lado do cliente popular para desenvolvimento Web, usado para criar o conteúdo estático.«A«Estrutura«1
+C01Q04«Usamos PHP, pois?«É difícil de aprender assim garantimos a empregrabilidade.«Não permite uma integração flexível com HTML, assim protegemos nosso código de invasões.«Mesmo sendo interpretado possui um desempenho rápido e eficiente.«PHP não é uma linguagem mas um pseudocódigo como HTML ou JavaScript.«C«PHP«1
+C01Q05«Quanto a estrutura do Web Server Apache:«O Apache obtém a página PHP que foi solicitada e solicita ao interpretador de PHP sua execução.«A página HTML pode ou não fazer acesso ao banco de dados.«Ao final da execução do programa PHP, uma página de resposta em PHP é enviada ao Apache.«O Servidor Web repassa uma página PHP de resposta para o navegador que a solicitou.«A«Estrutura«1
+C02Q01«Qual é a tag usada para criar um formulário em HTML?«<form>«<input>«<action>«<label>«A«HTML«1
+C02Q02«Qual tag é usada para criar um campo de entrada de texto em um formulário?«<form>«<input>«<action>«<label>«B««1
+C02Q03«Qual atributo da tag <form> especifica para onde os dados do formulário serão enviados após o envio?«form-action«action«form-destination«destination«B«HTML«1
+C02Q04«Qual tag é usada para criar uma quebra de linha (linha nova) em HTML?«<br>«<break>«<lb>«<newline>«A«HTML«1
+C02Q05«Qual tag é usada para criar um rótulo descritivo para um campo de entrada em um formulário?«<input>«<label>«<form-label>«<description>«B««1
+C03Q01«Qual é a finalidade do CSS em relação ao desenvolvimento Web?«Definir a estrutura do documento HTML.«Adicionar interatividade ao site.«Controlar a apresentação e o estilo do documento HTML.«Criar funções de back-end para o site.«C«CSS«1
+C03Q02«Qual é a sintaxe correta para selecionar um elemento HTML com a classe "destaque" em CSS?«!destaque«.destaque«<destaque>«"destaque"«B«CSS«1
+C03Q03«Qual propriedade CSS é usada para definir a cor do texto de um elemento?«background-color«text-color«color«font-color«C«CSS«1
+C03Q04«Qual propriedade CSS é usada para alterar o tamanho da fonte do texto?«text-size«font-size«size«font-style«B«CSS«1
+C03Q05«Qual é a função da propriedade CSS margin?«Definir a cor do plano de fundo de um elemento.«Controlar o espaçamento interno de um elemento.«Controlar o espaçamento externo de um elemento.«Definir o estilo de borda de um elemento.«C«CSS«1
+C04Q01«Qual é a extensão de arquivo padrão para arquivos PHP?«.ph«.php«.phtml«.html«B«PHP«1
+C04Q02«Como inicia um script PHP?«<?php«<php«<script«<file language=”PHP”«A«PHP«1
+C04Q03«Qual função do PHP é usada para mostrar um texto na tela?«print«echo«display«show«B«PHP«1
+C04Q04«Como definir uma variável em PHP?«var $nome  = “valor”;«def $nome = “valor”;«$nome = “valor”;«define $nome = “valor”;«C«PHP«1
+C04Q05«Como é a terminação de uma instrução em PHP?«; (ponto é vírgula)«. (ponto)«: (dois pontos)«/ (barra)«A«PHP«1
+C05Q01«Qual o comparador válido em PHP?«==«=«=>«=<«A«PHP«1
+C05Q02«Qual a função PHP é usada para conectar a um banco de dados MySQL?«mysql_connect()«connect_mysql()«new mysqli()«connect()«C«PHP«1
+C05Q03«Como selecionar um banco de dados MySQL em PHP?«mysql_select_db()«select_db()«mysqli_select_db()«db_select()«B«PHP«1
+C05Q04«Qual a função PHP é usada para executar uma consulta SQL?«mysql_query()«query()«mysqli_query()«execute()«B«PHP«1
+C05Q05«Como fechar uma conexão MySQL em PHP?«mysql_close()«close()«close_mysqli()«mysqli_close()«B««1

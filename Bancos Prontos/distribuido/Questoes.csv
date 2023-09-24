@@ -1,0 +1,31 @@
+﻿% Arquivo de Importação para Processos Distribuídos
+% ------------------------------------------------------------------------
+% Campos: Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
+% Exemplo: C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
+% Áreas das Questões: Linux;Docker;HDFS;MapReduce;Banco de Dados Distribuído
+% ------------------------------------------------------------------------
+C01Q01«Qual o comando para listar arquivos e diretórios no Linux?«ls«dir«list«show«A«Linux«1
+C01Q02«Como criar um diretório no Linux?«mkdir«create«newdir«dircreate«A«Linux«1
+C01Q03«Qual o comando no Linux usado para mudar de diretório?«cd«change«movedir«dirmove«A«Linux«1
+C01Q04«Qual o comando para remover um arquivo no Linux?«del«delete«rm«rmdir«C«Linux«1
+C01Q05«Qual o comando usado para renomear um arquivo no Linux?«move«rename«mv«shift«C«Linux«1
+C02Q01«O que é Docker?«Uma linguagem de programação«Uma plataforma de serviço em nuvem«Uma ferramenta de virtualização de aplicativos em contêineres«Um sistema operacional«C«Docker«1
+C02Q02«O que é um contêiner Docker?«Uma máquina virtual«Um pacote de software que inclui tudo necessário para executar um aplicativo«Um serviço na nuvem«Um banco de dados«B«Docker«1
+C02Q03«Qual comando Docker é usado para listar todos os contêineres em execução?«docker ps«docker ls«docker list«docker run«A«Docker«1
+C02Q04«Qual comando Docker é usado para obter uma imagem do Docker Hub?«docker download«docker get«docker pull«docker push«C«Docker«1
+C02Q05«No Docker, criamos nosso contêineres a partir?«De uma imagem «De um contêiner «De um programa«Não criamos, mas baixamos este da Web«A«Docker«1
+C03Q01«O que significa HDFS no contexto do Hadoop?««Hadoop Distributed File System«Hadoop Data File System«Hadoop Disk File System«Hadoop Direct File System«A«HDFS«1
+C03Q02«Qual é a principal função do HDFS no Hadoop?«Processamento de dados«Armazenamento de dados«Visualização de dados«Limpeza de dados«B«HDFS«1
+C03Q03«Qual o tamanho do bloco padrão no HDFS?«64 Mb«128 Mb«256 Mb«512 Mb«B«HDFS«1
+C03Q04«O que é um NameNode no HDFS?«É o nó que armazena os dados«É o nó que gerencia o sistema de arquivos e o acesso aos arquivos pelos clientes«É o nó que processa os dados«É o nó que distribui os dados«B«HDFS«1
+C03Q05«O que acontece se um DataNode falhar no HDFS?«O sistema inteiro falha«O NameNode reatribui as tarefas do DataNode falho a outro DataNode«Os dados no DataNode falho são perdidos até seu retorno«O HDFS entra em modo somente de leitura«B«HDFS«1
+C04Q01«O que é o MapReduce no contexto do Hadoop?«Uma linguagem de programação«Um sistema de arquivos distribuídos«Um framework para processamento de dados em paralelo«Uma ferramenta de visualização dos dados«C«MapReduce«1
+C04Q02«Qual a função do ‘Map’ em MapReduce?«Distribuir os dados entre os nós«Obter o par (chave;valor) e processar os dados em paralelo«Reduzir os resultados processados«Armazenar os dados«B«MapReduce«1
+C04Q03«Qual a função do ‘Reduce’ em MapReduce?«Distribuir os dados entre os nós«Obter o par (chave;valor) e reduzir as duplicidades por chaves«Reduzir todos os dados a uma única unidade e retornar esse valor«Armazenar os dados«B«MapReduce«1
+C04Q04«Qual a função do JobTracker para o MapReduce?«É o nó que armazena os dados«É o nó que gerencia o sistema de arquivos HDFS«É o nó responsável por receber tarefas de Map-Reduce e submetê-las aos Task Trackers«É o nó que processa os dados«C«MapReduce«1
+C04Q05«O que acontece se um TaskTracker falhar em MapReduce?«O sistema inteiro falha«O JobTracker reatribui as tarefas do TaskTracker falho a outro TaskTracker«Os dados no TaskTracker falho são perdidos e o sistema é obrigado a interromper o processo do MapReduce«O MapReduce entra em modo de somente leitura«B«MapReduce«1
+C05Q01«O que é um banco de dados distribuído?«Um banco de dados que está localizado em um único local«Um banco de dados que está localizado em vários locais«Um banco de dados que não pode ser acessado remotamente«Um banco de dados que não pode ser compartilhado«B«Banco de Dados Distribuído«1
+C05Q02«Qual é a principal vantagem de um banco de dados distribuído?«Menor custo«Menor tempo de resposta«Maior segurança«Maior disponibilidade e confiabilidade«D«Banco de Dados Distribuído«1
+C05Q03«O que é transparência de localização em um banco de dados distribuído?«A capacidade de esconder do usuário que o sistema é distribuído (ocultar as diferenças)«A capacidade de acessar os dados (sem saber sua localização física)«A capacidade de esconder os dados dos usuários.«A capacidade de mover os dados de um local para o outro sem interferência do usuário.«B«Banco de Dados Distribuído«1
+C05Q04«O que é transparência de acesso em um banco de dados distribuído?«A capacidade de esconder do usuário que o sistema é distribuído (ocultar as diferenças)«A capacidade de acessar os dados (sem saber sua localização física)«A capacidade de esconder os dados dos usuários.«A capacidade de mover os dados de um local para o outro sem interferência do usuário.«A«Banco de Dados Distribuído«1
+C05Q05«O que é transparência de localização em um banco de dados distribuído?«A capacidade de esconder do usuário que o sistema é distribuído (ocultar as diferenças)«A capacidade de acessar os dados (sem saber sua localização física)«A capacidade de esconder os dados dos usuários.«A capacidade de mover os dados de um local para o outro sem interferência do usuário.«D«Banco de Dados Distribuído«1

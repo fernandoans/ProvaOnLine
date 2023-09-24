@@ -1,0 +1,31 @@
+﻿% Arquivo de Importação para Algoritmo
+% ------------------------------------------------------------------------
+% Campos: Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
+% Exemplo: C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
+% Áreas das Questões: Fluxogramação;Portugol;Programação
+% ------------------------------------------------------------------------
+C01Q01«Qual é a principal finalidade de um fluxograma:«Representar visualmente a programação de um software«Analisar dados estatísticos em um gráfico«Descrever os requisitos de hardware de um sistema«Textualmente, relatar uma sequência de processos em um sistema de forma clara«A«Fluxogramação«1
+C01Q02«Qual símbolo é comumente usado em um fluxograma para representar uma decisão?«Círculo«Retângulo«Losango«Triângulo«C«Fluxogramação«1
+C01Q03«Qual dos seguintes elementos é frequentemente encontrado em um fluxograma para indicar o início ou o término de um processo?«Setas direcionais«Losango«Retângulo arredondado«Retângulo«C«Fluxogramação«1
+C01Q04«A definição de Portugol é?«Um editor de programação em português«Um conjunto de ações para gerar um gráfico«Um conjunto de regras e semânticas«Um software«C«Portugol«1
+C01Q05«Na estrutura básica do Portugol qual termo marca o início de um programa?«programa«função«começo«start«A«Portugol«1
+C02Q01«Exemplos ideais de nomes de variáveis:«A, b, c, D«analisar, remover, modificar«NomUsuario, nome, valorDoCpf«Que possuam os mesmos nomes dos comandos.«C«Programação«1
+C02Q02«Qual símbolo é comumente usado em um fluxograma para representar uma repetição?«Círculo«Retângulo«Losango«Triângulo«C«Fluxogramação«1
+C02Q03«Representam tipos de variáveis em Portugol?«real«libras«polegadas«moeda«A«Portugol«1
+C02Q04«O método inicial de Portugol é?«comecou()«inicio()«ativar()«principal()«B«Portugol«1
+C02Q05«Como representa um comando de decisão ou desvio condicional?«se«enquanto«para«escolha«A«Portugol«1
+C03Q01«O que é um algorítmo na programação:«Uma linguagem de programação«Um conjunto de instruções para resolver um problema«Um tipo de software«Um tipo de hardware«B«Fluxogramação«1
+C03Q02«Qual é a importância dos algoritmos na programação?«São usados para criar gráficos«São usados para resolver problemas e realizar tarefas«São usados para criar sites«São usados para criar jogos«B«Fluxogramação«1
+C03Q03«O que é Portugol?«Uma linguagem de programação«Um algorítmo«Um software«Um hardware«A«Portugol«1
+C03Q04«Por que Portugol é útil para iniciantes na programação?«Pois é uma linguagem de programação avançada«Pois é uma linguagem fácil de aprender«Pois é um software de programação«Pois é um hardware de programação«C«Portugol«1
+C03Q05«O que são loops em Portugol?«São erros de programação«São variáveis«São estruturas que permitem a execução repetida de um bloco de código«São funções«C«Portugol«1
+C04Q01«O que é programação básica?«É um tipo de hardware«É um tipo de software«É o nível inicial de programação«É um tipo de linguagem de programação«C«Programação«1
+C04Q02«O que são Arrays na programação?«São erros de programas«São variáveis«São funções«São estruturas de dados«D«Programação«1
+C04Q03«O que são operadores aritméticos em Portugol?«São erros de programação«São variáveis«São funções«São símbolos usados para realizar operações matemáticas«C«Portugol«1
+C04Q04«O que são Bibliotecas em Portugol?«São coleções de livros sobre programação«São coleções de funções e procedimentos que podem ser usados por outros programas«São coleções de variáveis«São coleções de erros de programação«B«Portugol«1
+C04Q05«O que é depuração?«O processo de encontrar e corrigir erros em um programa«O processo de criar um programa«O processo de executar um programa«O processo de eliminar um programa«A«Programação«1
+C05Q01«O que é uma função em programação?«Um conjunto de instruções que realiza uma tarefa específica«Um conjunto de instruções que é acionado quando ocorre um erro no programa«Um conjunto de instruções que possui a capacidade de armazenar números«Um conjunto de instruções  que possui a capacidade de armazenar arrays«A«Programação«1
+C05Q02«O que é uma String em linguagem de Programação?«É um tipo de variável que armazena texto«É um tipo de variável que armazena valores numéricos«É um tipo de variável que armazena valores lógicos«É um tipo de variável que armazena arrays«A«Programação«1
+C05Q03«O que é um Boolean em linguagem de Programação?«É um tipo de variável que armazena texto«É um tipo de variável que armazena valores numéricos«É um tipo de variável que armazena valores lógicos«É um tipo de variável que armazena arrays«C«Programação«1
+C05Q04«O que é um operador de atribuição em Portugol?«É um operador que realiza operações matemáticas«É um operador que compara dois valores«É um operador que assinala um valor a uma variável«É um operador que realiza operações lógicas«C«Portugol«1
+C05Q05«O que é um operador lógico em Portugol?«É um operador que realiza operações matemáticas«É um operador que compara dois valores«É um operador que atribui um valor a uma variável«É um operador que realiza operações textuais«C«Portugol«1

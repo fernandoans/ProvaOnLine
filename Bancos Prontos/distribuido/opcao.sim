@@ -1,0 +1,6 @@
+TITULO=Processos Distribuídos
+TEMPO=2*60*60
+TOTAL_QUESTAO=10
+AC=Linux;Docker;HDFS;MapReduce;Banco de Dados Distribuído
+AREA_ESCOLHIDA=
+SEMESTRE=1

@@ -1,0 +1,31 @@
+﻿% Arquivo de Importação para Python I
+% ------------------------------------------------------------------------
+% Campos: Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
+% Exemplo: C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
+% Áreas das Questões: Básico;Estrutura de Dados;Funções;Comandos;Arquivos
+% ------------------------------------------------------------------------
+C01Q01«Qual o tipo de dado para o valor “Hello” em Python?«int«float«string«boolean«C«Básico«1
+C01Q02«Como converter um número inteiro 10 para um número de ponto flutuante?«float(10)«Int.to_float(10)«10.to_float()«10.float()«A«Básico«1
+C01Q03«Qual o resultado da expressão: 3 == 3.0?«True«False«Erro de Sintaxe«Erro de Execução«A«Básico«1
+C01Q04«Qual a saída do seguinte código: print(type(10))«<int>«<class ‘int’>«<integer>«10«A«Básico«1
+C01Q05«Qual a sintaxe em Python para criar um string contendo várias linhas?«Usando aspas simples«Usando aspas duplas«Usando três aspas simples ou duplas«Não é possível realizar tal ação«C«Básico«1
+C02Q01«Qual é a diferença entre uma lista e uma tupla?«As listas são ordenadas e as tuplas não«As tuplas são ordenadas e as listas não«As listas são mutáveis e as tuplas não«As tuplas são mutáveis e as listas não«C«Estrutura de Dados«1
+C02Q02«Como podemos adicionar um elemento em uma lista?«lista.add(elemento)«lista.append(elemento)«lista.insert(elemento)«lista.push(elemento)«B«Estrutura de Dados«1
+C02Q03«Qual a saída do seguinte código: print(type({1,2,3})?«<class ‘list’>«<class ‘tuple’>«<class ‘set’>«<class ‘dict’>«C«Estrutura de Dados«1
+C02Q04«Como podemos acessar o valor de um dicionário, chamado dados, através de sua chave?«dados[chave]«dados.get(chave)«dados.key(chave)«Duas respostas estão corretas«D«Estrutura de Dados«1
+C02Q05«Qual é a diferença entre um conjunto é uma lista?«As listas são ordenadas e os conjuntos não«Os conjuntos são ordenados e as listas não«As listas permitem duplicatas e os conjuntos não«Os conjuntos permitem duplicatas e as listas não«C«Estrutura de Dados«1
+C03Q01«No Python não existe a estrutura switch, esta foi substituída por:«if-elif-else«lambda«case«select«A«Comandos«1
+C03Q02«Qual o comando é usado para testar uma condição lógica e executar um determinado bloco de código com base nesta condição?«if«else«select«switch«A«Comandos«1
+C03Q03«Qual comando é responsável por executar um bloco de código repetidamente com base em uma condicional?«for«loop«do«while«D«Comandos«1
+C03Q04«Qual comando é responsável para percorrer uma sequência (como lista, tupla, dicionário, conjunto ou string)?«for«loop«do«while«A«Comandos«1
+C03Q05«Qual o comando usado para ignorar a iteração atual de um laço e passar para a próxima?«skip«break«continue«pass«C«Comandos«1
+C04Q01«Como podemos definir uma função em python?«def nome():«function nome():«nome = function():«nome = func():«A«Funções«1
+C04Q02«O que é uma função lambda?«Uma função que pode ter qualquer número de argumentos mas apenas uma expressão«Uma função que não tem nome«Uma função que é definida sem a palavra-chave def«Uma função que pode ser definida na linha da instrução«E«Funções«1
+C04Q03«Como podemos obter a data e hora atual em Python a partir da importação da biblioteca datetime?«datetime.datetime.now()«datetime.now()«now()«date.now()«A«Funções«1
+C04Q04«Qual a utilidade da função Map em Python?«Mapeia uma função para cada elemento de uma lista«Mapeia uma função para cada chave de um dicionário«Mapeia uma função para cada elemento de um conjunto«Mapeia uma função para cada elemento de uma tupla«A«Funções«1
+C04Q05«O que é list comprehension em Python?«Uma maneira concisa de criar listas.«Uma maneira de aplicar uma função a cada elemento de uma lista.«Uma maneira de filtrar elementos de uma lista«Uma forma de reduzir um lista a um único elemento«A«Funções«1
+C05Q01«Como criar um arquivo de texto em Python?«open(‘nomArq.txt’, ‘r’)«create(‘nomArq.txt’, ‘r’)«file(‘nomArq.txt’, ‘r’)«new(‘nomArq.txt’, ‘r’)«A«Arquivos«1
+C05Q02«Como ler um arquivo de texto em Python?«read(‘nomArq.txt’, ‘r’)«open(‘nomArq.txt’, ‘r’).read()«file(‘nomArq.txt’, ‘r’).read()«new(‘nomArq.txt’, ‘r’).read()«B«Arquivos«1
+C05Q03«Como gravar um arquivo de texto em Python?«write(‘nomArq.txt’, ‘dados’)«open(‘nomArq.txt’, ‘w’).write(‘dados’)«file(‘nomArq.txt’, ‘w’).write(‘dados’)«new(‘nomArq.txt’, ‘w’).write(‘dados’)«B«Arquivos«1
+C05Q04«Qual o comando usado para fechar um arquivo em Python?«break()«continue()«stop()«close()«D«Arquivos«1
+C05Q05«Qual a utilidade do comando try em Python?«Tenta executar um bloco de código e para se encontrar um erro.«Tenta executar um bloco de código e ignora os erros.«Tenta executar um bloco de código e levanta uma exceção se encontrar um erro.«Tenta executar um bloco de código e aborta o programa se encontrar um erro.«C«Comandos«1
