@@ -1,4 +1,4 @@
-package jprova;
+package jprova.util;
 
 /**
  * Verifica o tempo

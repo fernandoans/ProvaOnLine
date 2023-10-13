@@ -1,4 +1,4 @@
-package jprova;
+package jprova.util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

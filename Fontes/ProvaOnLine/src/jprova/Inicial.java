@@ -5,10 +5,17 @@ import java.util.List;
 import java.awt.event.*;
 import javax.swing.*;
 
+import jprova.banco.Questao;
 import jprova.banco.TratarArquivo;
+import jprova.janela.Desempenho;
+import jprova.janela.MntComponents;
+import jprova.janela.Resumo;
+import jprova.janela.SobreSistema;
+import jprova.util.Atributo;
+import jprova.util.Tempo;
+import jprova.util.VerProcs;
 
 import java.awt.Rectangle;
-import java.awt.Component;
 import java.awt.Font;
 
 /**
@@ -38,37 +45,32 @@ public class Inicial extends JFrame implements Runnable {
 		setResizable(false);
 
 		// Titulo - Parte 1
-		labQuestao = getLabel("Quest\343o 999 de 200", 10, 10, 140, 21);
+		labQuestao = MntComponents.getJLabel("Quest\343o 999 de 200", 10, 10, 140, 21);
 		getContentPane().add(labQuestao, null);
 
-		imgAnt = new JButton();
-		imgAnt.setIcon(Atributo.getImage("back.gif"));
-		imgAnt.setBounds(new Rectangle(23, 35, 40, 40));
+		imgAnt = MntComponents.getJButtonImg("back.gif", 23, 35, 40, 40,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					antQuestao();
+				}
+			});
 		getContentPane().add(imgAnt, null);
-		imgAnt.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				antQuestao();
-			}
-		});
-		getContentPane().add(getLabel("Anterior", 20, 80, 60, 13), null);
+		getContentPane().add(MntComponents.getJLabel("Anterior", 20, 80, 60, 13), null);
 
-		imgProx = new JButton();
-		imgProx.setIcon(Atributo.getImage("forward.gif"));
-		imgProx.setBounds(new Rectangle(95, 35, 40, 40));
+		imgProx = MntComponents.getJButtonImg("forward.gif", 95, 35, 40, 40,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					prxQuestao();
+				}
+			});
 		getContentPane().add(imgProx, null);
-		imgProx.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				prxQuestao();
-			}
-		});
-		getContentPane().add(getLabel("Pr\363ximo", 90, 80, 57, 13), null);
+		getContentPane().add(MntComponents.getJLabel("Pr\363ximo", 90, 80, 57, 13), null);
 
 		// Titulo - Parte 2
-		getContentPane().add(getLabel("Ir Para:", 160, 49, 57, 13), null);
-		edtIrQuestao = new JTextField();
-		edtIrQuestao.setBounds(new Rectangle(215, 46, 50, 21));
+		getContentPane().add(MntComponents.getJLabel("Ir Para:", 160, 49, 57, 13), null);
+		edtIrQuestao = MntComponents.getJTextField(215, 46, 50, 21);
 		getContentPane().add(edtIrQuestao, null);
 		edtIrQuestao.addActionListener(new ActionListener() {
 			@Override
@@ -88,46 +90,46 @@ public class Inicial extends JFrame implements Runnable {
 		});
 
 		// Titulo - Parte 3
-		labTempo = getLabel("Tempo Transcorrido: HH:MM:SS", 600, 10, 250, 21);
+		labTempo = MntComponents.getJLabel("Tempo Transcorrido: HH:MM:SS", 600, 10, 250, 21);
 		getContentPane().add(labTempo, null);
 		
-		butResumo = new JButton("Resumo");
-		butResumo.setBounds(new Rectangle(730, 40, 100, 30));
+		butResumo = MntComponents.getJButtonTxt("Resumo", 730, 40, 100, 30,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					mostrarResumo();
+				}
+			});
 		getContentPane().add(butResumo, null);
-		butResumo.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mostrarResumo();
-			}
-		});
 
 		// Area da Pergunta
-		getContentPane().add(getLabel("Pergunta:", 10, 110, 90, 30), null);
-		txaPerg = getJTextArea();
-		getContentPane().add(getJScrollPane(txaPerg, 110, 110, 720, 100), null);
+		getContentPane().add(MntComponents.getJLabel("Pergunta:", 10, 110, 90, 30), null);
+		txaPerg = MntComponents.getJTextArea();
+		scrPerg = MntComponents.getJScrollPane(txaPerg, 110, 110, 720, 100);
+		getContentPane().add(scrPerg, null);
 
 		// Area das Respostas
-		pnObjetivas = new JPanel();
+		pnObjetivas = MntComponents.getJPanel(10, 220, 820, 300);
 		montaObjetivas();
 		getContentPane().add(pnObjetivas, null);
 
-		pnSubjetivas = new JPanel();
+		pnSubjetivas = MntComponents.getJPanel(10, 450, 820, 50);
 		montaSubjetivas();
 		getContentPane().add(pnSubjetivas, null);
 		
 		// Rodapé
-		butFinalizar = new JButton("Finalizar");
-		butFinalizar.setBounds(new Rectangle(730, 535, 100, 30));
+		butFinalizar = MntComponents.getJButtonTxt("Finalizar", 730, 535, 100, 30,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					finalizar();
+				}
+			});
 		getContentPane().add(butFinalizar, null);
-		butFinalizar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				finalizar();
-			}
-		});
 
-		labDetalhe = getLabel(Atributo.COPYRIGHT, 320, 535, 300, 30);
-		getContentPane().add(labDetalhe, null);
+		getContentPane().add(MntComponents.getJLabel(Atributo.COPYRIGHT, 320, 535, 300, 30), null);
+
+		// Ações a realizar
 		mostrarQuestao();
 		if (VerProcs.SO == 0) {
 			String inicial = System.getenv("windir") + "\\system32\\taskkill /f /im ";
@@ -148,13 +150,8 @@ public class Inicial extends JFrame implements Runnable {
 	}
 
 	private void montaSubjetivas() {
-		pnSubjetivas.setBounds(new Rectangle(10, 220, 820, 300));
-		pnSubjetivas.setLayout(null);
-
-		pnSubjetivas.add(getLabel("Resposta:", 0, 0, 90, 30), null);
-		txSubjetiva = new JTextField();
-		txSubjetiva.setFont(new Font("Arial", 0, 16));
-		txSubjetiva.setBounds(new Rectangle(100, 0, 720, 50));
+		pnSubjetivas.add(MntComponents.getJLabel("Resposta:", 0, 0, 90, 30), null);
+		txSubjetiva = MntComponents.getJTextField(100, 0, 720, 50);
 		txSubjetiva.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -165,115 +162,89 @@ public class Inicial extends JFrame implements Runnable {
 	}
 	
 	private void montaObjetivas() {
-		pnObjetivas.setBounds(new Rectangle(10, 220, 820, 300));
-		pnObjetivas.setLayout(null);
+		txaOpcA = MntComponents.getJTextArea();
+		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcA, 100, 0, 720, 50), null);
 
-		txaOpcA = getJTextArea();
-		pnObjetivas.add(getJScrollPane(txaOpcA, 100, 0, 720, 50), null);
+		txaOpcB = MntComponents.getJTextArea();
+		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcB, 100, 60, 720, 50), null);
 
-		txaOpcB = getJTextArea();
-		pnObjetivas.add(getJScrollPane(txaOpcB, 100, 60, 720, 50), null);
+		txaOpcC = MntComponents.getJTextArea();
+		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcC, 100, 120, 720, 50), null);
 
-		txaOpcC = getJTextArea();
-		pnObjetivas.add(getJScrollPane(txaOpcC, 100, 120, 720, 50), null);
+		txaOpcD = MntComponents.getJTextArea();
+		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcD, 100, 180, 720, 50), null);
 
-		txaOpcD = getJTextArea();
-		pnObjetivas.add(getJScrollPane(txaOpcD, 100, 180, 720, 50), null);
-
-		txaOpcE = getLabel("Todas as questões acima.", 100, 240, 720, 20);
+		JLabel txaOpcE = MntComponents.getJLabel("Todas as questões acima.", 100, 240, 720, 20);
 		txaOpcE.setFont(new Font("Arial", 0, 16));
 		pnObjetivas.add(txaOpcE, null);
 
-		txaOpcF = getLabel("Nenhuma das questões acima.", 100, 270, 720, 20);
+		JLabel txaOpcF = MntComponents.getJLabel("Nenhuma das questões acima.", 100, 270, 720, 20);
 		txaOpcF.setFont(new Font("Arial", 0, 16));
 		pnObjetivas.add(txaOpcF, null);
 
 		// Botões de Respostas
 		opcoes = new ButtonGroup();
-		radOpcA = new JRadioButton("Op\347\343o A:");
-		radOpcA.setBounds(new Rectangle(0, 0, 90, 30));
+		radOpcA = MntComponents.getJRadioButton("Op\347\343o A:", 0, 0, 90, 30,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					marcarOpcao("A");
+				}
+			});
 		opcoes.add(radOpcA);
 		pnObjetivas.add(radOpcA, null);
-		radOpcA.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				marcarOpcao("A");
-			}
-		});
-		radOpcB = new JRadioButton("Op\347\343o B:");
-		radOpcB.setBounds(new Rectangle(0, 60, 90, 30));
+		
+		radOpcB = MntComponents.getJRadioButton("Op\347\343o B:", 0, 60, 90, 30,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					marcarOpcao("B");
+				}
+			});
 		opcoes.add(radOpcB);
 		pnObjetivas.add(radOpcB, null);
-		radOpcB.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				marcarOpcao("B");
-			}
-		});
-		radOpcC = new JRadioButton("Op\347\343o C:");
-		radOpcC.setBounds(new Rectangle(0, 120, 90, 30));
+		
+		radOpcC = MntComponents.getJRadioButton("Op\347\343o C:", 0, 120, 90, 30,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					marcarOpcao("C");
+				}
+			});
 		opcoes.add(radOpcC);
 		pnObjetivas.add(radOpcC, null);
-		radOpcC.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				marcarOpcao("C");
-			}
-		});
-		radOpcD = new JRadioButton("Op\347\343o D:");
-		radOpcD.setBounds(new Rectangle(0, 180, 90, 30));
+		
+		radOpcD = MntComponents.getJRadioButton("Op\347\343o D:", 0, 180, 90, 30,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					marcarOpcao("D");
+				}
+			});
 		opcoes.add(radOpcD);
 		pnObjetivas.add(radOpcD, null);
-		radOpcD.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				marcarOpcao("D");
-			}
-		});
-		radOpcE = new JRadioButton("Op\347\343o E:");
-		radOpcE.setBounds(new Rectangle(0, 240, 90, 20));
+
+		radOpcE = MntComponents.getJRadioButton("Op\347\343o E:", 0, 240, 90, 20,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					marcarOpcao("E");
+				}
+			});
 		opcoes.add(radOpcE);
 		pnObjetivas.add(radOpcE, null);
-		radOpcE.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				marcarOpcao("E");
-			}
-		});
-		radOpcF = new JRadioButton("Op\347\343o F:");
-		radOpcF.setBounds(new Rectangle(0, 270, 90, 20));
+		
+		radOpcF = MntComponents.getJRadioButton("Op\347\343o F:", 0, 270, 90, 20,
+			new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					marcarOpcao("F");
+				}
+			});
 		opcoes.add(radOpcF);
 		pnObjetivas.add(radOpcF, null);
-		radOpcF.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				marcarOpcao("F");
-			}
-		});
 	}
 
-	private JLabel getLabel(String titulo, int p1, int p2, int p3, int p4) {
-		JLabel label = new JLabel(titulo);
-		label.setBounds(new Rectangle(p1, p2, p3, p4));
-		return label;
-	}
-	
-	private JScrollPane getJScrollPane(Component view, int p1, int p2, int p3, int p4) {
-		JScrollPane scroll = new JScrollPane(view);
-		scroll.setHorizontalScrollBarPolicy(31);
-		scroll.setBounds(new Rectangle(p1, p2, p3, p4));
-		return scroll;
-	}
-	
-	private JTextArea getJTextArea() {
-		JTextArea texto = new JTextArea();
-		texto.setLineWrap(true);
-		texto.setFont(new Font("Arial", 0, 16));
-		texto.setWrapStyleWord(true);
-		texto.setEditable(false);
-		return texto;
-	}
-	
 	private void antQuestao() {
 		if (qstAtual > 1) {
 			qstAtual--;
@@ -302,6 +273,8 @@ public class Inicial extends JFrame implements Runnable {
 			pnSubjetivas.setVisible(qst.getTipo() == 'S');
 			
 			if (qst.getTipo() == 'O') {
+				scrPerg.setBounds(new Rectangle(110, 110, 720, 100));
+
 				txaOpcA.setText(qst.getOpcaoA());
 				txaOpcA.setCaretPosition(0);
 				txaOpcB.setText(qst.getOpcaoB());
@@ -334,6 +307,7 @@ public class Inicial extends JFrame implements Runnable {
 					}
 				}
 			} else {
+				scrPerg.setBounds(new Rectangle(110, 110, 720, 330));
 				txSubjetiva.setText(qst.getOpcaoEscolhida());
 			}
 		}
@@ -439,12 +413,11 @@ public class Inicial extends JFrame implements Runnable {
 	private JTextField txSubjetiva;
 	private JTextField edtIrQuestao;
 	private JTextArea txaPerg;
+	private JScrollPane scrPerg;
 	private JTextArea txaOpcA;
 	private JTextArea txaOpcB;
 	private JTextArea txaOpcC;
 	private JTextArea txaOpcD;
-	private JLabel txaOpcE;
-	private JLabel txaOpcF;
 	private ButtonGroup opcoes;
 	private JRadioButton radOpcA;
 	private JRadioButton radOpcB;
@@ -459,7 +432,6 @@ public class Inicial extends JFrame implements Runnable {
 	private JLabel labTempo;
 	private JButton butResumo;
 	private JButton butFinalizar;
-	private JLabel labDetalhe;
 	private Tempo tempo;
 	private Thread th;
 	private int qstAtual;

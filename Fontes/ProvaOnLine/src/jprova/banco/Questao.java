@@ -1,4 +1,6 @@
-package jprova;
+package jprova.banco;
+
+import jprova.util.Atributo;
 
 /**
  * Base de Questoes
@@ -12,7 +14,7 @@ public final class Questao {
 			String area, int semestre, int numQuestao) {
 		setTipo(tipo);
 		setIdentificacao(identificacao);
-		pergunta = pergunta.replaceAll("%SL%", ""+'\n');
+		pergunta = pergunta.replaceAll("%SL% ", ""+'\n');
 		setPergunta(pergunta);
 		if (tipo == 'O') {
 			setOpcaoA(opcaoA);

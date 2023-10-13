@@ -1,10 +1,12 @@
-package jprova;
+package jprova.janela;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import jprova.util.Tempo;
 
 /**
  * Mostrar a tela Resumo
@@ -13,10 +15,6 @@ import javax.swing.event.ListSelectionListener;
 @SuppressWarnings("serial")
 public class Resumo extends JDialog implements Runnable {
 
-    private JLabel objeto0;
-    private JLabel objeto1;
-    private JLabel objeto2;
-    private JLabel objeto3;
     private JList<?> lista;
     private JLabel labTempo;
     private JButton butResumo;
@@ -36,31 +34,22 @@ public class Resumo extends JDialog implements Runnable {
     }
 
     public final void mostrar() {
+        this.setTitle("Resumo");
         this.getContentPane().setLayout(null);
         this.getContentPane().setBackground(new Color(238, 238, 238));
         this.setSize(810, 440);
         this.setLocationRelativeTo(null);
-        this.setTitle("Resumo");
         this.setResizable(false);
         this.setModal(true);
         
-        labTempo = new JLabel("Tempo Transcorrido: HH:MM:SS");
-        labTempo.setBounds(new Rectangle(560, 10, 250, 21));
+        labTempo = MntComponents.getJLabel("Tempo Transcorrido: HH:MM:SS", 560, 10, 250, 21);
         this.getContentPane().add(labTempo, null);
         
         // Miolo
-        objeto0 = new JLabel("Nº");
-        objeto0.setBounds(new Rectangle(18, 40, 55, 13));
-        this.getContentPane().add(objeto0, null);
-        objeto1 = new JLabel("Pergunta");
-        objeto1.setBounds(new Rectangle(75, 40, 80, 13));
-        this.getContentPane().add(objeto1, null);
-        objeto2 = new JLabel("Opção Escolhida");
-        objeto2.setBounds(new Rectangle(375, 40, 130, 13));
-        this.getContentPane().add(objeto2, null);
-        objeto3 = new JLabel("Revisão");
-        objeto3.setBounds(new Rectangle(720, 40, 80, 13));
-        this.getContentPane().add(objeto3, null);
+        this.getContentPane().add(MntComponents.getJLabel("Nº", 18, 40, 55, 13), null);
+        this.getContentPane().add(MntComponents.getJLabel("Pergunta", 75, 40, 80, 13), null);
+        this.getContentPane().add(MntComponents.getJLabel("Opção Escolhida", 375, 40, 130, 13), null);
+        this.getContentPane().add(MntComponents.getJLabel("Revisão", 720, 40, 80, 13), null);
         
         lista.setFont(new Font("Courier New", Font.PLAIN, 12));
         JScrollPane sp = new JScrollPane(lista);
@@ -77,25 +66,24 @@ public class Resumo extends JDialog implements Runnable {
         });
 
         // Botoes
-        butResumo = new JButton("Voltar");
-        butResumo.setBounds(new Rectangle(10, 370, 100, 30));
+        butResumo = MntComponents.getJButtonTxt("Voltar", 10, 370, 100, 30,
+        	new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                aoFechar();
+	            }
+	        });
         this.getContentPane().add(butResumo, null);
-        butResumo.addActionListener (new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                aoFechar();
-            }
-        });
-        butFinalizar = new JButton("Finalizar");
-        butFinalizar.setBounds(new Rectangle(687, 370, 100, 30));
+
+        butFinalizar = MntComponents.getJButtonTxt("Finalizar", 687, 370, 100, 30, 
+        	new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                finalizar = true;
+	                aoFechar();
+	            }
+	        });
         this.getContentPane().add(butFinalizar, null);
-        butFinalizar.addActionListener (new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                finalizar = true;
-                aoFechar();
-            }
-        });
 
         this.addWindowListener(new WindowAdapter() {
             @Override

@@ -2,6 +2,7 @@ package jprova.banco;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.sql.Statement;
@@ -15,8 +16,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
-import jprova.Atributo;
-import jprova.Questao;
+import jprova.util.Atributo;
 
 /**
  * Metodos de Tratamento do Arquivo
@@ -73,7 +73,7 @@ public class TratarArquivo {
 			try {
 				int numQst = 0;
 				Statement stm = con.createStatement();
-				if (totalQstS > 0) {
+				if (totalQstO > 0) {
 					numQst = carregarQuestoes(stm, lista, 'O', totalQstO, numQst);
 				}
 				if (totalQstS > 0) {
@@ -90,8 +90,12 @@ public class TratarArquivo {
 	}
 	
 	private int carregarQuestoes(Statement stm, List<Questao> lista, char tipo, int total, int numQst) throws SQLException {
-		ResultSet res = stm.executeQuery(montarSql(tipo,total));
+		ResultSet res = stm.executeQuery(montarSql(tipo));
+		int ct = 1;
 		while (res.next()) {
+			if (ct++ > total) {
+				break;
+			}
 			Questao questoes = new Questao(
 				res.getString(1).charAt(0),
 				res.getString(2), 
@@ -109,7 +113,7 @@ public class TratarArquivo {
 		return numQst;
 	}
 
-	private String montarSql(char tipo, int total) {
+	private String montarSql(char tipo) {
 		String monta = "SELECT tipo, identificacao, pergunta, opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre " +
 				"FROM questoes WHERE tipo = '" + tipo + "' AND semestre <= " + Atributo.semestre;
 		if (Atributo.areaEsc.length() > 0) {
@@ -142,59 +146,65 @@ public class TratarArquivo {
 		int total = 0;
 		if (abrirDatabase()) {
 			try {
-				PreparedStatement pstm = con.prepareStatement(
-					"INSERT INTO questoes (tipo, identificacao, pergunta, " +
-					"opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre) " +
-					"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				String linMnt = "";
 				FileInputStream fis = new FileInputStream(nomArq);
 				InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
 				BufferedReader arquivo = new BufferedReader(isr);
-				while ((linMnt = arquivo.readLine()) != null) {
-					if (linMnt.charAt(0) == '%' || linMnt.charAt(1) == '%') {
-						continue;
-					}
-				    if (linMnt.trim().length() == 0) {
-						continue;
-					}
-					StringTokenizer strTok = new StringTokenizer(linMnt, "«");
-					String tipo = strTok.nextToken();
-					pstm.setString(1, tipo);  // tipo
-					pstm.setString(2, strTok.nextToken());  // identificacao
-					pstm.setString(3, strTok.nextToken()); // pergunta
-					if (tipo.equals("O")) { // Questoes objetivas 
-						pstm.setString(4, strTok.nextToken()); // opcaoA
-						pstm.setString(5, strTok.nextToken()); // opcaoB
-						pstm.setString(6, strTok.nextToken()); // opcaoC
-						pstm.setString(7, strTok.nextToken()); // opcaoD
-						pstm.setString(8, strTok.nextToken());  // resposta
-						pstm.setString(9, strTok.nextToken());  // area
-						pstm.setInt(10, Integer.parseInt(strTok.nextToken()));  // semestre
-					} else { // Questoes subjetivas
-						pstm.setString(4, ""); // opcaoA
-						pstm.setString(5, ""); // opcaoB
-						pstm.setString(6, ""); // opcaoC
-						pstm.setString(7, ""); // opcaoD
-						pstm.setString(8, strTok.nextToken());  // resposta
-						pstm.setString(9, strTok.nextToken());  // area
-						pstm.setInt(10, Integer.parseInt(strTok.nextToken()));  // semestre
-					}
-					pstm.executeUpdate();
-					total++;
-				}
+				total = montarDados(arquivo);
 				arquivo.close();
-				pstm.close();
+				
 				Statement stm = con.createStatement();
 				stm.execute("CHECKPOINT;");
 				con.commit();
 			} catch (Exception ex) {
-				System.out.println((new StringBuilder("importarDados: "))
-						.append(ex.getMessage()).toString());
+				System.out.println("Erro ao Importar Dados: " + ex.getMessage());
 			}
 			fecharDatabase();
 		}
 		return total;
 	}
+	
+	private int montarDados(BufferedReader arquivo) throws SQLException, NumberFormatException, IOException {
+		int total = 0;
+		PreparedStatement pstm = con.prepareStatement(
+				"INSERT INTO questoes (tipo, identificacao, pergunta, " +
+				"opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		String linMnt = "";
+		while ((linMnt = arquivo.readLine()) != null) {
+			if (linMnt.charAt(0) == '%' || linMnt.charAt(1) == '%') {
+				continue;
+			}
+		    if (linMnt.trim().length() == 0) {
+				continue;
+			}
+			StringTokenizer strTok = new StringTokenizer(linMnt, "«");
+			String tipo = strTok.nextToken();
+			pstm.setString(1, tipo);  // tipo
+			pstm.setString(2, strTok.nextToken());  // identificacao
+			pstm.setString(3, strTok.nextToken()); // pergunta
+			if (tipo.equals("O")) { // Questoes objetivas 
+				pstm.setString(4, strTok.nextToken()); // opcaoA
+				pstm.setString(5, strTok.nextToken()); // opcaoB
+				pstm.setString(6, strTok.nextToken()); // opcaoC
+				pstm.setString(7, strTok.nextToken()); // opcaoD
+				pstm.setString(8, strTok.nextToken());  // resposta
+				pstm.setString(9, strTok.nextToken());  // area
+				pstm.setInt(10, Integer.parseInt(strTok.nextToken()));  // semestre
+			} else { // Questoes subjetivas
+				pstm.setString(4, ""); // opcaoA
+				pstm.setString(5, ""); // opcaoB
+				pstm.setString(6, ""); // opcaoC
+				pstm.setString(7, ""); // opcaoD
+				pstm.setString(8, strTok.nextToken());  // resposta
+				pstm.setString(9, strTok.nextToken());  // area
+				pstm.setInt(10, Integer.parseInt(strTok.nextToken()));  // semestre
+			}
+			pstm.executeUpdate();
+			total++;
+		}
+		pstm.close();
+		return total;
+	}	
 
 	private Connection con;
 }

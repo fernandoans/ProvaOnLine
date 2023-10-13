@@ -3,6 +3,9 @@ package jprova.banco;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import jprova.janela.MntComponents;
+
 import java.io.*;
 
 @SuppressWarnings("serial")
@@ -15,39 +18,37 @@ public class Importar extends JFrame {
 		setSize(481, 170);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		JLabel objeto0 = new JLabel("Caminho do Arquivo CSV:");
-		objeto0.setBounds(new Rectangle(10, 18, 198, 13));
-		getContentPane().add(objeto0, null);
-		arquivo = new JLabel("[arquivo CSV]");
-		arquivo.setBounds(new Rectangle(10, 45, 440, 13));
+		
+		getContentPane().add(MntComponents.getJLabel("Caminho do Arquivo CSV:", 10, 18, 198, 13), null);
+		arquivo = MntComponents.getJLabel("[arquivo CSV]", 10, 45, 440, 13);
 		getContentPane().add(arquivo, null);
-		registro = new JLabel("Registros: [registros]");
-		registro.setBounds(new Rectangle(10, 65, 440, 13));
+		registro = MntComponents.getJLabel("Registros: [registros]", 10, 65, 440, 13);
 		getContentPane().add(registro, null);
-		JButton btArquivo = new JButton("Selecionar");
-		btArquivo.setBounds(new Rectangle(11, 100, 100, 30));
+		
+		JButton btArquivo = MntComponents.getJButtonTxt("Selecionar", 11, 100, 100, 30,
+			new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					selecionar();
+				}
+			});
 		getContentPane().add(btArquivo, null);
-		btArquivo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				selecionar();
-			}
-		});
-		JButton btCriar = new JButton("Criar");
-		btCriar.setBounds(new Rectangle(180, 100, 100, 30));
+
+		JButton btCriar = MntComponents.getJButtonTxt("Criar", 180, 100, 100, 30, 
+			new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					criar();
+				}
+			});
 		getContentPane().add(btCriar, null);
-		btCriar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				criar();
-			}
-		});
-		JButton btImportar = new JButton("Importar");
-		btImportar.setBounds(new Rectangle(358, 100, 100, 30));
+
+		JButton btImportar = MntComponents.getJButtonTxt("Importar", 358, 100, 100, 30,
+			new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					importar();
+				}
+			});
 		getContentPane().add(btImportar, null);
-		btImportar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				importar();
-			}
-		});
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
