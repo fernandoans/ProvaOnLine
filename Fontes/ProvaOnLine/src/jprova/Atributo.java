@@ -25,7 +25,8 @@ public final class Atributo {
 	public static final String CFVERSAO = "Vers\343o 2.0";
 	public static String titulo;
 	public static int tempo = 14400;
-	public static int totQuestao = -1;
+	public static int totQuestaoO = -1;
+	public static int totQuestaoS = -1;
 	public static int semestre = -1;
 	public static List<String> ac = new ArrayList<String>();
 	public static String areaEsc = "";
@@ -44,8 +45,10 @@ public final class Atributo {
 					int hora;
 					for (hora = 1; tok.hasMoreTokens(); hora *= Integer.parseInt(tok.nextToken()));
 					tempo = hora;
-				} else if (linha.substring(0, linha.indexOf('=')).equals("TOTAL_QUESTAO")) {
-					totQuestao = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
+				} else if (linha.substring(0, linha.indexOf('=')).equals("TOTAL_QUESTAO_O")) {
+					totQuestaoO = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
+				} else if (linha.substring(0, linha.indexOf('=')).equals("TOTAL_QUESTAO_S")) {
+					totQuestaoS = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
 				} else if (linha.substring(0, linha.indexOf('=')).equals("AREA_ESCOLHIDA")) {
 					areaEsc = linha.substring(linha.indexOf('=') + 1);
 				} else if (linha.substring(0, linha.indexOf('=')).equals("AC")) {
@@ -87,6 +90,9 @@ public final class Atributo {
 
 	public static String montarTam(String texto, int tam) {
 		String ret = texto;
+		if (ret == null) {
+			ret = "";
+		}
 		if (ret.length() > tam + 3)
 			ret = (new StringBuilder(String.valueOf(ret.substring(0, tam)))).append("...").toString();
 		for (; ret.length() < tam + 3; ret = (new StringBuilder(String.valueOf(ret))).append(" ").toString());

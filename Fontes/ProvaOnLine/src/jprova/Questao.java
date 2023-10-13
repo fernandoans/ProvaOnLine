@@ -7,19 +7,26 @@ package jprova;
  */
 public final class Questao {
 
-	public Questao(String identificacao, String pergunta, String opcaoA,
-			String opcaoB, String opcaoC, String opcaoD, char resposta,
+	public Questao(char tipo, String identificacao, String pergunta, String opcaoA,
+			String opcaoB, String opcaoC, String opcaoD, String resposta,
 			String area, int semestre, int numQuestao) {
+		setTipo(tipo);
 		setIdentificacao(identificacao);
+		pergunta = pergunta.replaceAll("%SL%", ""+'\n');
 		setPergunta(pergunta);
-		setOpcaoA(opcaoA);
-		setOpcaoB(opcaoB);
-		setOpcaoC(opcaoC);
-		setOpcaoD(opcaoD);
+		if (tipo == 'O') {
+			setOpcaoA(opcaoA);
+			setOpcaoB(opcaoB);
+			setOpcaoC(opcaoC);
+			setOpcaoD(opcaoD);
+			setOpcaoE("Todas as questões acima.");
+			setOpcaoF("Nenhuma das questões acima.");
+		}
 		setResposta(resposta);
 		setArea(area);
 		setSemestre(semestre);
 		setNumQuestao(numQuestao);
+		setOpcaoEscolhida("");
 	}
 
 	public int getNumQuestao() {
@@ -28,6 +35,14 @@ public final class Questao {
 
 	public void setNumQuestao(int numQuestao) {
 		this.numQuestao = numQuestao;
+	}
+
+	public char getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(char tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getIdentificacao() {
@@ -94,11 +109,11 @@ public final class Questao {
 		this.opcaoF = opcaoF;
 	}
 
-	public char getResposta() {
+	public String getResposta() {
 		return resposta;
 	}
 
-	public void setResposta(char resposta) {
+	public void setResposta(String resposta) {
 		this.resposta = resposta;
 	}
 
@@ -118,11 +133,11 @@ public final class Questao {
 		this.semestre = semestre;
 	}
 
-	public char getOpcaoEscolhida() {
+	public String getOpcaoEscolhida() {
 		return opcaoEscolhida;
 	}
 
-	public void setOpcaoEscolhida(char opcaoEscolhida) {
+	public void setOpcaoEscolhida(String opcaoEscolhida) {
 		this.opcaoEscolhida = opcaoEscolhida;
 	}
 
@@ -135,39 +150,19 @@ public final class Questao {
 	}
 
 	public boolean isCorrigir() {
-		return resposta == opcaoEscolhida;
+		return resposta.equalsIgnoreCase(opcaoEscolhida);
 	}
 
 	public String toString() {
-		String opcao = "";
-		switch (opcaoEscolhida) {
-		case 65: // 'A'
-			opcao = opcaoA;
-			break;
-		case 66: // 'B'
-			opcao = opcaoB;
-			break;
-		case 67: // 'C'
-			opcao = opcaoC;
-			break;
-		case 68: // 'D'
-			opcao = opcaoD;
-			break;
-		case 69: // 'E'
-			opcao = opcaoE;
-			break;
-		case 70: // 'F'
-			opcao = opcaoF;
-			break;
-		}
 		return(new StringBuilder("  "))
 			.append(Atributo.colocaZero(numQuestao, 3)).append("    ")
 			.append(Atributo.montarTam(pergunta, 36)).append("    ")
-			.append(Atributo.montarTam(opcao, 44)).append("    ")
+			.append(Atributo.montarTam(opcaoEscolhida, 44)).append("    ")
 			.append(marcar ? "Sim" : "N\343o").toString();
 	}
 
 	private int numQuestao;
+	private char tipo;
 	private String identificacao;
 	private String pergunta;
 	private String opcaoA;
@@ -176,9 +171,9 @@ public final class Questao {
 	private String opcaoD;
 	private String opcaoE;
 	private String opcaoF;
-	private char resposta;
+	private String resposta;
 	private String area;
 	private int semestre;
-	private char opcaoEscolhida;
+	private String opcaoEscolhida;
 	private boolean marcar;
 }

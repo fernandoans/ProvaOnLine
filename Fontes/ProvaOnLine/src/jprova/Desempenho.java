@@ -6,6 +6,7 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import com.itextpdf.text.Image;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
@@ -81,11 +82,18 @@ public class Desempenho extends JDialog {
 				.append(aAC[i]).append(" de ").append(tAC[i]).append(" (")
 				.append(mstPercentual(aAC[i], tAC[i])).append(" %)")
 				.toString());
-			labAC[i].setBounds(new java.awt.Rectangle(10, posTop, 280, 13));
+			labAC[i].setBounds(new java.awt.Rectangle((i % 2 == 0)?10:300, posTop, 280, 13));
 			getContentPane().add(labAC[i], null);
-			posTop += 15;
+			if (i % 2 != 0) posTop += 15;
 		}
 
+		labNome = new JLabel("Seu Nome:");
+		labNome.setBounds(new java.awt.Rectangle(10, 320, 80, 30));
+		getContentPane().add(labNome, null);
+		edtNome = new JTextField("");
+		edtNome.setBounds(new java.awt.Rectangle(90, 320, 300, 30));
+		getContentPane().add(edtNome, null);
+		
 		btSalvar = new JButton("Salvar");
 		btSalvar.setBounds(new java.awt.Rectangle(490, 320, 100, 30));
 		getContentPane().add(btSalvar, null);
@@ -124,6 +132,8 @@ public class Desempenho extends JDialog {
 			document.add(Image.getInstance(Atributo.getResource("jprova/imagens/ProvaOnLine.jpg")));
 			document.add(new Paragraph(Atributo.titulo, FontFactory.getFont(
 				"Helvetica", 22F, 1, new BaseColor(0, 83, 117))));
+			document.add(new Paragraph("Aluno: " + edtNome.getText(), FontFactory.getFont(
+					"Helvetica", 15F, 3, new BaseColor(0, 69, 98))));
 			document.add(new Paragraph("Desempenho", FontFactory.getFont(
 				"Helvetica", 18F, 3, new BaseColor(0, 69, 98))));
 			document.add(new Paragraph("De Tempo:", FontFactory.getFont(
@@ -150,40 +160,68 @@ public class Desempenho extends JDialog {
 				acertou = qst.isCorrigir();
 				if (acertou)
 					resultado = "Correta";
-				else if (qst.getOpcaoEscolhida() == 0)
+				else if (qst.getOpcaoEscolhida().length() == 0)
 					resultado = "N\343o respondida";
 				else
 					resultado = "Incorreta";
 				
-				document.add(new Paragraph((new StringBuilder(String
-					.valueOf(qst.getIdentificacao()))).append(" - ")
-					.append(qst.getOpcaoEscolhida()).append(" - ")
-					.append(resultado).toString()));
+				document.add(new Paragraph(
+					qst.getIdentificacao() + 
+					" - " + resultado + 
+					" - Área: " + qst.getArea())); 
 
-				switch (qst.getResposta()) {
-				case 65: // 'A'
-					resultado = qst.getOpcaoA();
-					break;
-				case 66: // 'B'
-					resultado = qst.getOpcaoB();
-					break;
-				case 67: // 'C'
-					resultado = qst.getOpcaoC();
-					break;
-				case 68: // 'D'
-					resultado = qst.getOpcaoD();
-					break;
-				case 69: // 'E'
-					resultado = "Todas as questões acima.";
-					break;
-				case 70: // 'F'
-					resultado = "Nenhuma das questões acima.";
-					break;
+				if (qst.getTipo() == 'O') {
+					String marcou;
+					if (qst.getOpcaoEscolhida().length() == 0) {
+						marcou = "Você não respondeu"; 
+					} else {
+						marcou = "Você marcou " + qst.getOpcaoEscolhida();
+						if (!acertou) {
+							marcou += " e a opção correta é " + qst.getResposta();
+						}
+					}
+					document.add(new Paragraph(marcou,
+							FontFactory.getFont("Courier", 9F, 0, new BaseColor(0, 0, 0))));
+					switch (qst.getResposta().charAt(0)) {
+					case 65: // 'A'
+						resultado = qst.getOpcaoA();
+						break;
+					case 66: // 'B'
+						resultado = qst.getOpcaoB();
+						break;
+					case 67: // 'C'
+						resultado = qst.getOpcaoC();
+						break;
+					case 68: // 'D'
+						resultado = qst.getOpcaoD();
+						break;
+					case 69: // 'E'
+						resultado = "Todas as questões acima.";
+						break;
+					case 70: // 'F'
+						resultado = "Nenhuma das questões acima.";
+						break;
+					}
 				}
-				document.add(new Paragraph((new StringBuilder(String
-					.valueOf(qst.getPergunta()))).append(" - ")
-					.append(resultado).toString(), 
+				if (qst.getTipo() == 'S') {
+					String marcou;
+					if (qst.getOpcaoEscolhida().length() == 0) {
+						marcou = "Você não respondeu"; 
+					} else {
+						marcou = "Você escreveu: " + qst.getOpcaoEscolhida();
+					}
+					document.add(new Paragraph(marcou,
+							FontFactory.getFont("Courier", 9F, 0, new BaseColor(0, 0, 0))));
+					resultado = qst.getResposta();
+				}
+				document.add(new Paragraph("Pergunta:", 
 					FontFactory.getFont("Courier", 9F, 0, new BaseColor(0, 0, 0))));
+				document.add(new Paragraph(qst.getPergunta(), 
+						FontFactory.getFont("Courier", 9F, 0, new BaseColor(0, 0, 0))));
+				document.add(new Paragraph("Resposta Correta:", 
+						FontFactory.getFont("Courier", 9F, 0, new BaseColor(0, 0, 0))));
+				document.add(new Paragraph(resultado, 
+						FontFactory.getFont("Courier", 9F, 0, new BaseColor(0, 0, 0))));
 			}
 			document.close();
 			JOptionPane.showMessageDialog(this,
@@ -198,10 +236,7 @@ public class Desempenho extends JDialog {
 		totalFeitos = 0;
 		for (Iterator<Questao> iterator = questoes.iterator(); iterator.hasNext();) {
 			Questao qst = (Questao) iterator.next();
-			if (qst.getOpcaoEscolhida() == 'A'
-				|| qst.getOpcaoEscolhida() == 'B'
-				|| qst.getOpcaoEscolhida() == 'C'
-				|| qst.getOpcaoEscolhida() == 'D')
+			if (qst.getOpcaoEscolhida().length() > 0)
 				totalFeitos++;
 			for (int i = 0; i < Atributo.ac.size(); i++) {
 				if (!qst.getArea().equals(Atributo.ac.get(i)))
@@ -220,6 +255,9 @@ public class Desempenho extends JDialog {
 			}
 		}
 	}
+
+	private JLabel labNome;
+	private JTextField edtNome;
 
 	private JLabel objeto0;
 	private JLabel labGasto;

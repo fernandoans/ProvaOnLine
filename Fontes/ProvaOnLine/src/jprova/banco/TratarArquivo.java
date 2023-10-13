@@ -42,7 +42,11 @@ public class TratarArquivo {
 		if (abrirDatabase()) {
 			try {
 				Statement stm = con.createStatement();
-				stm.executeUpdate("CREATE TABLE questoes (id IDENTITY PRIMARY KEY, identificacao CHAR(6), pergunta VARCHAR, opcaoA VARCHAR, opcaoB VARCHAR, opcaoC VARCHAR, opcaoD VARCHAR, resposta CHAR(1), area VARCHAR(16), semestre int)");
+				stm.executeUpdate("CREATE TABLE questoes (id IDENTITY PRIMARY KEY, "
+						+ "tipo CHAR(1), identificacao CHAR(6), pergunta VARCHAR, "
+						+ "opcaoA VARCHAR, opcaoB VARCHAR, opcaoC VARCHAR, "
+						+ "opcaoD VARCHAR, resposta VARCHAR(30), area VARCHAR(16), "
+						+ "semestre int)");
 				stm.close();
 				ret = true;
 			} catch (SQLException ex) {
@@ -63,24 +67,18 @@ public class TratarArquivo {
 		}
 	}
 
-	public List<Questao> obterDados(int totalQst) {
+	public List<Questao> obterDados(int totalQstO, int totalQstS) {
 		List<Questao> lista = new ArrayList<Questao>();
 		if (abrirDatabase()) {
 			try {
+				int numQst = 0;
 				Statement stm = con.createStatement();
-				ResultSet res = stm.executeQuery(montaSql());
-				int addQst = 0;
-				while (res.next()) {
-					Questao questoes = new Questao(res.getString(1),
-						res.getString(2), res.getString(3),
-						res.getString(4), res.getString(5),
-						res.getString(6), res.getString(7).charAt(0),
-						res.getString(8), res.getInt(9), addQst+1);
-					lista.add(questoes);
-					if (totalQst > -1 && ++addQst == totalQst)
-						break;
+				if (totalQstS > 0) {
+					numQst = carregarQuestoes(stm, lista, 'O', totalQstO, numQst);
 				}
-				res.close();
+				if (totalQstS > 0) {
+					numQst = carregarQuestoes(stm, lista, 'S', totalQstS, numQst);
+				}
 				stm.close();
 			} catch (Exception ex) {
 				System.out.println((new StringBuilder("obterDados: "))
@@ -90,17 +88,34 @@ public class TratarArquivo {
 		}
 		return lista;
 	}
-
-	private String montaSql() {
-		String monta = "SELECT identificacao, pergunta, opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre " +
-				"FROM questoes WHERE semestre <= " + Atributo.semestre;
-		if (Atributo.areaEsc.length() > 0) {
-			monta = (new StringBuilder(String.valueOf(monta)))
-				.append(" AND area = '").append(Atributo.areaEsc).append("'")
-				.toString();
+	
+	private int carregarQuestoes(Statement stm, List<Questao> lista, char tipo, int total, int numQst) throws SQLException {
+		ResultSet res = stm.executeQuery(montarSql(tipo,total));
+		while (res.next()) {
+			Questao questoes = new Questao(
+				res.getString(1).charAt(0),
+				res.getString(2), 
+				res.getString(3),
+				res.getString(4), 
+				res.getString(5),
+				res.getString(6), 
+				res.getString(7),
+				res.getString(8), 
+				res.getString(9), 
+				res.getInt(10), numQst+1);
+			lista.add(questoes);
 		}
-		monta = (new StringBuilder(String.valueOf(monta))).append(" ORDER BY rand()").toString();
-		return monta;
+		res.close();
+		return numQst;
+	}
+
+	private String montarSql(char tipo, int total) {
+		String monta = "SELECT tipo, identificacao, pergunta, opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre " +
+				"FROM questoes WHERE tipo = '" + tipo + "' AND semestre <= " + Atributo.semestre;
+		if (Atributo.areaEsc.length() > 0) {
+			monta += " AND area = '" + Atributo.areaEsc + "'";
+		}
+		return monta + " ORDER BY rand()";
 	}
 
 	public int totalRegistro() {
@@ -128,37 +143,45 @@ public class TratarArquivo {
 		if (abrirDatabase()) {
 			try {
 				PreparedStatement pstm = con.prepareStatement(
-					"INSERT INTO questoes (identificacao, pergunta, opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO questoes (tipo, identificacao, pergunta, " +
+					"opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre) " +
+					"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 				String linMnt = "";
-				int num = 0;
 				FileInputStream fis = new FileInputStream(nomArq);
 				InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
 				BufferedReader arquivo = new BufferedReader(isr);
-				while ((linMnt = arquivo.readLine()) != null)
-					if (linMnt.charAt(0) != '%' && linMnt.trim().length() > 0) {
-						StringTokenizer strTok = new StringTokenizer(linMnt, "«");
-						num = strTok.countTokens();
-						if (num > 0)
-							pstm.setString(1, strTok.nextToken());
-						if (num > 1)
-							pstm.setString(2, strTok.nextToken());
-						if (num > 2)
-							pstm.setString(3, strTok.nextToken());
-						if (num > 3)
-							pstm.setString(4, strTok.nextToken());
-						if (num > 4)
-							pstm.setString(5, strTok.nextToken());
-						if (num > 5)
-							pstm.setString(6, strTok.nextToken());
-						if (num > 6)
-							pstm.setString(7, strTok.nextToken());
-						if (num > 7)
-							pstm.setString(8, strTok.nextToken());
-						if (num > 8)
-							pstm.setInt(9, Integer.parseInt(strTok.nextToken()));
-						pstm.executeUpdate();
-						total++;
+				while ((linMnt = arquivo.readLine()) != null) {
+					if (linMnt.charAt(0) == '%' || linMnt.charAt(1) == '%') {
+						continue;
 					}
+				    if (linMnt.trim().length() == 0) {
+						continue;
+					}
+					StringTokenizer strTok = new StringTokenizer(linMnt, "«");
+					String tipo = strTok.nextToken();
+					pstm.setString(1, tipo);  // tipo
+					pstm.setString(2, strTok.nextToken());  // identificacao
+					pstm.setString(3, strTok.nextToken()); // pergunta
+					if (tipo.equals("O")) { // Questoes objetivas 
+						pstm.setString(4, strTok.nextToken()); // opcaoA
+						pstm.setString(5, strTok.nextToken()); // opcaoB
+						pstm.setString(6, strTok.nextToken()); // opcaoC
+						pstm.setString(7, strTok.nextToken()); // opcaoD
+						pstm.setString(8, strTok.nextToken());  // resposta
+						pstm.setString(9, strTok.nextToken());  // area
+						pstm.setInt(10, Integer.parseInt(strTok.nextToken()));  // semestre
+					} else { // Questoes subjetivas
+						pstm.setString(4, ""); // opcaoA
+						pstm.setString(5, ""); // opcaoB
+						pstm.setString(6, ""); // opcaoC
+						pstm.setString(7, ""); // opcaoD
+						pstm.setString(8, strTok.nextToken());  // resposta
+						pstm.setString(9, strTok.nextToken());  // area
+						pstm.setInt(10, Integer.parseInt(strTok.nextToken()));  // semestre
+					}
+					pstm.executeUpdate();
+					total++;
+				}
 				arquivo.close();
 				pstm.close();
 				Statement stm = con.createStatement();
