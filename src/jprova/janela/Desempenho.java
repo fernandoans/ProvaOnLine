@@ -20,9 +20,10 @@ import java.util.Locale;
 public class Desempenho extends JDialog {
 
 	public Desempenho(List<Questao> questoes, int totalTempo) {
-		labAC = new JLabel[Atributo.ac.size()];
 		LOCAL = new Locale("pt", "BR");
-		format = new DecimalFormat("##0.00", new DecimalFormatSymbols(LOCAL));
+		FORMAT = new DecimalFormat("##0.00", new DecimalFormatSymbols(LOCAL));
+
+		labAC = new JLabel[Atributo.ac.size()];
 		aAC = new int[Atributo.ac.size()];
 		tAC = new int[Atributo.ac.size()];
 		this.questoes = questoes;
@@ -77,7 +78,8 @@ public class Desempenho extends JDialog {
 			getContentPane().add(labAC[i], null);
 			if (i % 2 != 0) posTop += 15;
 		}
-
+		getContentPane().add(MntComponents.getJLabel("Sua Nota foi: " + FORMAT.format(notaProva), 230, 150, 400, 13), null);
+		
 		getContentPane().add(MntComponents.getJLabel("Seu Nome:", 10, 320, 80, 30), null);
 		edtNome = new JTextField("");
 		edtNome.setBounds(new java.awt.Rectangle(90, 320, 300, 30));
@@ -104,7 +106,7 @@ public class Desempenho extends JDialog {
 
 	private String mstPercentual(int val1, int val2) {
 		return (val2 == 0)?"0,00":
-			format.format(((double) val1 * 100D) / (double) val2).toString();
+			FORMAT.format(((double) val1 * 100D) / (double) val2).toString();
 	}
 
 	private void salvar() {
@@ -115,7 +117,7 @@ public class Desempenho extends JDialog {
 			relatorio.setMedia(labMedia.getText());
 			relatorio.setAcertadas(labAcertadas.getText());
 			relatorio.setPercentual(labPercentual.getText());
-			relatorio.salvar();
+			relatorio.salvar(notaProva);
 			JOptionPane.showMessageDialog(this,
 				"O arquivo 'desempenho.pdf' foi salvo corretamente.");
 		} catch (Exception e) {
@@ -126,6 +128,7 @@ public class Desempenho extends JDialog {
 
 	private void computarAcertos() {
 		totalFeitos = 0;
+		notaProva = 0.0;
 		for (Iterator<Questao> iterator = questoes.iterator(); iterator.hasNext();) {
 			Questao qst = (Questao) iterator.next();
 			if (qst.getOpcaoEscolhida().length() > 0)
@@ -144,10 +147,15 @@ public class Desempenho extends JDialog {
 					break;
 				}
 				acerto++;
+				notaProva += qst.getValorQst();
 			}
 		}
 	}
 
+	private final Locale LOCAL;
+	private final DecimalFormat FORMAT;
+	
+	private double notaProva = 0.0;
 	private JTextField edtNome;
 	private JLabel labGasto;
 	private JLabel labAcertadas;
@@ -158,8 +166,6 @@ public class Desempenho extends JDialog {
 	private List<Questao> questoes;
 	private int totalTempo;
 	private int totalFeitos;
-	private Locale LOCAL;
-	private DecimalFormat format;
 	private int acerto;
 	private int aAC[];
 	private int tAC[];

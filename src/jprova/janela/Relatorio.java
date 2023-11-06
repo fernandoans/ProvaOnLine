@@ -3,8 +3,11 @@ package jprova.janela;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import javax.swing.JLabel;
 
@@ -26,6 +29,7 @@ public class Relatorio {
 	private JLabel labAC[];
 	private List<Questao> questoes;
 	private Questao qst;
+    private double notaProva = 0.0;
 	
 	private String nome;
 	private String gasto;
@@ -33,13 +37,19 @@ public class Relatorio {
 	private String acertadas;
 	private String percentual;
 	private Document document;
-	
+
+	private final Locale LOCAL;
+	private final DecimalFormat FORMAT;
+
 	public Relatorio(JLabel labAC[], List<Questao> questoes) {
 		this.labAC = labAC;
 		this.questoes = questoes;
+		LOCAL = new Locale("pt", "BR");
+		FORMAT = new DecimalFormat("##0.00", new DecimalFormatSymbols(LOCAL));
 	}
 	
-	public void salvar() throws DocumentException, MalformedURLException, IOException {
+	public void salvar(double notaProva) throws DocumentException, MalformedURLException, IOException {
+		this.notaProva = notaProva;
 		document = new Document(PageSize.A4, 50F, 50F, 50F, 50F);
 		@SuppressWarnings("unused")
 		PdfWriter writer = PdfWriter.getInstance(document,
@@ -58,6 +68,8 @@ public class Relatorio {
 		document.add(new Paragraph(Atributo.titulo, FontFactory.getFont(
 				"Helvetica", 22F, 1, new BaseColor(0, 83, 117))));
 		document.add(new Paragraph("Aluno: " + nome, FontFactory.getFont(
+				"Helvetica", 15F, 3, new BaseColor(0, 69, 98))));
+		document.add(new Paragraph("Sua Nota foi: " + FORMAT.format(notaProva), FontFactory.getFont(
 				"Helvetica", 15F, 3, new BaseColor(0, 69, 98))));
 	}
 	

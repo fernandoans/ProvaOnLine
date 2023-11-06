@@ -28,6 +28,8 @@ public final class Atributo {
 	public static int totQuestaoO = -1;
 	public static int totQuestaoS = -1;
 	public static int semestre = -1;
+	public static int notaObj = 0;
+	public static int notaSub = 0;
 	public static List<String> ac = new ArrayList<String>();
 	public static String areaEsc = "";
 	private static final String arqOpcao = "opcao.sim";
@@ -56,6 +58,10 @@ public final class Atributo {
 					for (StringTokenizer tok = new StringTokenizer(ret, ";"); tok.hasMoreTokens(); ac.add(tok.nextToken()));
 				} else if (linha.substring(0, linha.indexOf('=')).equals("SEMESTRE")) {
 					semestre = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
+				} else if (linha.substring(0, linha.indexOf('=')).equals("NOTA_OBJ")) {
+					notaObj = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
+				} else if (linha.substring(0, linha.indexOf('=')).equals("NOTA_SUB")) {
+					notaSub = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
 				}
 			}
 		} catch (Exception e) {

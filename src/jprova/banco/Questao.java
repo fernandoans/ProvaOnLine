@@ -154,6 +154,13 @@ public final class Questao {
 	public boolean isCorrigir() {
 		return resposta.equalsIgnoreCase(opcaoEscolhida);
 	}
+	
+	public double getValorQst() {
+		if (tipo == 'O') {
+			return ((double)Atributo.notaObj) / Atributo.totQuestaoO; 
+		}
+		return ((double)Atributo.notaSub) / Atributo.totQuestaoS; 
+	}
 
 	public String toString() {
 		return(new StringBuilder("  "))
