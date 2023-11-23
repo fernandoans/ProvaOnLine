@@ -20,16 +20,25 @@ import javax.swing.ImageIcon;
  */
 public final class Atributo {
 
-	/** Versao atual */
+	// Autor e Versao atual
 	public static final String COPYRIGHT = "2023 \251 Fernando Anselmo";
-	public static final String CFVERSAO = "Vers\343o 2.0";
+	public static final String CFVERSAO = "Vers\343o 2.1";
+	// Título da Prova 
 	public static String titulo;
+	// Tempo em milisegundos 
 	public static int tempo = 14400;
+	// Qtd questões objetivas 
 	public static int totQuestaoO = -1;
+	// Qtd questões subjetivas 
 	public static int totQuestaoS = -1;
+	// Qual semestre (ex. semestre 2 abrange tb o 1) 
 	public static int semestre = -1;
+	// Valor da nota das objetivas
 	public static int notaObj = 0;
+	// Valor da nota das subjetivas
 	public static int notaSub = 0;
+	// Verifica qtd processos antes e depos se o atributo for maior que 0 
+	public static boolean veFraude = false;
 	public static List<String> ac = new ArrayList<String>();
 	public static String areaEsc = "";
 	private static final String arqOpcao = "opcao.sim";
@@ -62,6 +71,8 @@ public final class Atributo {
 					notaObj = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
 				} else if (linha.substring(0, linha.indexOf('=')).equals("NOTA_SUB")) {
 					notaSub = Integer.parseInt(linha.substring(linha.indexOf('=') + 1));
+				} else if (linha.substring(0, linha.indexOf('=')).equals("VE_FRAUDE")) {
+					veFraude = Integer.parseInt(linha.substring(linha.indexOf('=') + 1)) > 0;
 				}
 			}
 		} catch (Exception e) {

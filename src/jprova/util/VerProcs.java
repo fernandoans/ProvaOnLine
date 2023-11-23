@@ -30,6 +30,10 @@ public class VerProcs {
 		}
 		return -1;
 	}
+	
+	public String obterValor() {
+		return "" + procsIniciais.size() + "/" + procsAtuais.size(); 
+	}
 
 	public void iniciarContagem() {
 		obterProcs(procsIniciais);
@@ -40,7 +44,7 @@ public class VerProcs {
 	}
 
 	public boolean isDiferente() {
-		return (procsAtuais.size() > (procsIniciais.size() + 5));
+		return (procsAtuais.size() > (procsIniciais.size() + 2));
 	}
 
 	private void obterProcs(Set<String> procs) {

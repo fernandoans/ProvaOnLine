@@ -127,6 +127,9 @@ public class Inicial extends JFrame implements Runnable {
 			});
 		getContentPane().add(butFinalizar, null);
 
+		labProcs = MntComponents.getJLabel("", 10, 535, 250, 30);
+		getContentPane().add(labProcs, null);
+		
 		getContentPane().add(MntComponents.getJLabel(Atributo.COPYRIGHT, 320, 535, 300, 30), null);
 
 		// Ações a realizar
@@ -393,11 +396,14 @@ public class Inicial extends JFrame implements Runnable {
 				new Desempenho(questoes, tempo.getIntHora());
 				System.exit(0);
 			}
-			fraude.procsAtuais();
-			if (fraude.isDiferente()) {
-				JOptionPane.showMessageDialog(this, "Processo MOFICADO. Prova foi finalizada!");
-				JOptionPane.showMessageDialog(this, "Seu RESULTADO é ZERO!");
-				System.exit(0);
+			if (Atributo.veFraude) {
+				fraude.procsAtuais();
+				labProcs.setText(fraude.obterValor());
+				if (fraude.isDiferente()) {
+					JOptionPane.showMessageDialog(this, "Processo MOFICADO. Prova foi finalizada!");
+					JOptionPane.showMessageDialog(this, "Seu RESULTADO é ZERO!");
+					System.exit(0);
+				}
 			}
 		}
 	}
@@ -430,6 +436,7 @@ public class Inicial extends JFrame implements Runnable {
 	private JButton imgProx;
 	private JCheckBox chkMarcar;
 	private JLabel labTempo;
+	private JLabel labProcs;
 	private JButton butResumo;
 	private JButton butFinalizar;
 	private Tempo tempo;

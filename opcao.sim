@@ -1,9 +1,10 @@
-TITULO=Programação Mobile
+TITULO=Programação Web
 TEMPO=2*60*60
-TOTAL_QUESTAO_O=6
+TOTAL_QUESTAO_O=8
 TOTAL_QUESTAO_S=4
-AC=Conhecimentos Gerais;Estrutura;Programação;Componentes Visuais
+AC=Estrutura;CSS;HTML;PHP;Programação
 AREA_ESCOLHIDA=
 SEMESTRE=2
-NOTA_OBJ=1
-NOTA_SUB=4
+NOTA_OBJ=3
+NOTA_SUB=2
+VE_FRAUDE=0

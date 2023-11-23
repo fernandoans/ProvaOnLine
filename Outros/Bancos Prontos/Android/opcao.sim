@@ -1,6 +1,10 @@
 TITULO=Programação Mobile
 TEMPO=2*60*60
-TOTAL_QUESTAO=10
+TOTAL_QUESTAO_O=8
+TOTAL_QUESTAO_S=4
 AC=Conhecimentos Gerais;Estrutura;Programação;Componentes Visuais
 AREA_ESCOLHIDA=
-SEMESTRE=1
+SEMESTRE=2
+NOTA_OBJ=3
+NOTA_SUB=2
+VE_FRAUDE=0

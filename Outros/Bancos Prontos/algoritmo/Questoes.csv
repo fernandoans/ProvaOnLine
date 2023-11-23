@@ -1,31 +1,46 @@
 ﻿% Arquivo de Importação para Algoritmo
 % ------------------------------------------------------------------------
-% Campos: Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
-% Exemplo: C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
-% Áreas das Questões: Fluxogramação;Portugol;Programação
+% Exemplo de Questão Objetiva:
+%   Campos: O«Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
+%   O«C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
+% Exemplo de Questão Subjetiva:
+%   Campos: S«Código«Questao«Resp«Area«Semestre
+%   S«C01Q01«Isto é teste«Sim«Conhecimentos Gerais«1
+% Use: %SL% para saltar de linha nas perguntas.
+% Áreas das Questões: Conhecimentos Gerais, Estrutura, Programação, Componentes Visuais
 % ------------------------------------------------------------------------
-C01Q01«Qual é a principal finalidade de um fluxograma:«Representar visualmente a programação de um software«Analisar dados estatísticos em um gráfico«Descrever os requisitos de hardware de um sistema«Textualmente, relatar uma sequência de processos em um sistema de forma clara«A«Fluxogramação«1
-C01Q02«Qual símbolo é comumente usado em um fluxograma para representar uma decisão?«Círculo«Retângulo«Losango«Triângulo«C«Fluxogramação«1
-C01Q03«Qual dos seguintes elementos é frequentemente encontrado em um fluxograma para indicar o início ou o término de um processo?«Setas direcionais«Losango«Retângulo arredondado«Retângulo«C«Fluxogramação«1
-C01Q04«A definição de Portugol é?«Um editor de programação em português«Um conjunto de ações para gerar um gráfico«Um conjunto de regras e semânticas«Um software«C«Portugol«1
-C01Q05«Na estrutura básica do Portugol qual termo marca o início de um programa?«programa«função«começo«start«A«Portugol«1
-C02Q01«Exemplos ideais de nomes de variáveis:«A, b, c, D«analisar, remover, modificar«NomUsuario, nome, valorDoCpf«Que possuam os mesmos nomes dos comandos.«C«Programação«1
-C02Q02«Qual símbolo é comumente usado em um fluxograma para representar uma repetição?«Círculo«Retângulo«Losango«Triângulo«C«Fluxogramação«1
-C02Q03«Representam tipos de variáveis em Portugol?«real«libras«polegadas«moeda«A«Portugol«1
-C02Q04«O método inicial de Portugol é?«comecou()«inicio()«ativar()«principal()«B«Portugol«1
-C02Q05«Como representa um comando de decisão ou desvio condicional?«se«enquanto«para«escolha«A«Portugol«1
-C03Q01«O que é um algorítmo na programação:«Uma linguagem de programação«Um conjunto de instruções para resolver um problema«Um tipo de software«Um tipo de hardware«B«Fluxogramação«1
-C03Q02«Qual é a importância dos algoritmos na programação?«São usados para criar gráficos«São usados para resolver problemas e realizar tarefas«São usados para criar sites«São usados para criar jogos«B«Fluxogramação«1
-C03Q03«O que é Portugol?«Uma linguagem de programação«Um algorítmo«Um software«Um hardware«A«Portugol«1
-C03Q04«Por que Portugol é útil para iniciantes na programação?«Pois é uma linguagem de programação avançada«Pois é uma linguagem fácil de aprender«Pois é um software de programação«Pois é um hardware de programação«C«Portugol«1
-C03Q05«O que são loops em Portugol?«São erros de programação«São variáveis«São estruturas que permitem a execução repetida de um bloco de código«São funções«C«Portugol«1
-C04Q01«O que é programação básica?«É um tipo de hardware«É um tipo de software«É o nível inicial de programação«É um tipo de linguagem de programação«C«Programação«1
-C04Q02«O que são Arrays na programação?«São erros de programas«São variáveis«São funções«São estruturas de dados«D«Programação«1
-C04Q03«O que são operadores aritméticos em Portugol?«São erros de programação«São variáveis«São funções«São símbolos usados para realizar operações matemáticas«C«Portugol«1
-C04Q04«O que são Bibliotecas em Portugol?«São coleções de livros sobre programação«São coleções de funções e procedimentos que podem ser usados por outros programas«São coleções de variáveis«São coleções de erros de programação«B«Portugol«1
-C04Q05«O que é depuração?«O processo de encontrar e corrigir erros em um programa«O processo de criar um programa«O processo de executar um programa«O processo de eliminar um programa«A«Programação«1
-C05Q01«O que é uma função em programação?«Um conjunto de instruções que realiza uma tarefa específica«Um conjunto de instruções que é acionado quando ocorre um erro no programa«Um conjunto de instruções que possui a capacidade de armazenar números«Um conjunto de instruções  que possui a capacidade de armazenar arrays«A«Programação«1
-C05Q02«O que é uma String em linguagem de Programação?«É um tipo de variável que armazena texto«É um tipo de variável que armazena valores numéricos«É um tipo de variável que armazena valores lógicos«É um tipo de variável que armazena arrays«A«Programação«1
-C05Q03«O que é um Boolean em linguagem de Programação?«É um tipo de variável que armazena texto«É um tipo de variável que armazena valores numéricos«É um tipo de variável que armazena valores lógicos«É um tipo de variável que armazena arrays«C«Programação«1
-C05Q04«O que é um operador de atribuição em Portugol?«É um operador que realiza operações matemáticas«É um operador que compara dois valores«É um operador que assinala um valor a uma variável«É um operador que realiza operações lógicas«C«Portugol«1
-C05Q05«O que é um operador lógico em Portugol?«É um operador que realiza operações matemáticas«É um operador que compara dois valores«É um operador que atribui um valor a uma variável«É um operador que realiza operações textuais«C«Portugol«1
+O«C01Q01«Qual é a principal finalidade de um fluxograma:«Representar visualmente a programação de um software«Analisar dados estatísticos em um gráfico«Descrever os requisitos de hardware de um sistema«Textualmente, relatar uma sequência de processos em um sistema de forma clara«A«Fluxogramação«1
+O«C01Q02«Qual símbolo é comumente usado em um fluxograma para representar uma decisão?«Círculo«Retângulo«Losango«Triângulo«C«Fluxogramação«1
+O«C01Q03«Qual dos seguintes elementos é frequentemente encontrado em um fluxograma para indicar o início ou o término de um processo?«Setas direcionais«Losango«Retângulo arredondado«Retângulo«C«Fluxogramação«1
+O«C01Q04«A definição de Portugol é?«Um editor de programação em português«Um conjunto de ações para gerar um gráfico«Um conjunto de regras e semânticas«Um software«C«Portugol«1
+O«C01Q05«Na estrutura básica do Portugol qual termo marca o início de um programa?«programa«função«começo«start«A«Portugol«1
+O«C02Q01«Exemplos ideais de nomes de variáveis:«A, b, c, D«analisar, remover, modificar«NomUsuario, nome, valorDoCpf«Que possuam os mesmos nomes dos comandos.«C«Programação«1
+O«C02Q02«Qual símbolo é comumente usado em um fluxograma para representar uma repetição?«Círculo«Retângulo«Losango«Triângulo«C«Fluxogramação«1
+O«C02Q03«Representam tipos de variáveis em Portugol?«real«libras«polegadas«moeda«A«Portugol«1
+O«C02Q04«O método inicial de Portugol é?«comecou()«inicio()«ativar()«principal()«B«Portugol«1
+O«C02Q05«Como representa um comando de decisão ou desvio condicional?«se«enquanto«para«escolha«A«Portugol«1
+O«C03Q01«O que é um algorítmo na programação:«Uma linguagem de programação«Um conjunto de instruções para resolver um problema«Um tipo de software«Um tipo de hardware«B«Fluxogramação«1
+O«C03Q02«Qual é a importância dos algoritmos na programação?«São usados para criar gráficos«São usados para resolver problemas e realizar tarefas«São usados para criar sites«São usados para criar jogos«B«Fluxogramação«1
+O«C03Q03«O que é Portugol?«Uma linguagem de programação«Um algorítmo«Um software«Um hardware«A«Portugol«1
+O«C03Q04«Por que Portugol é útil para iniciantes na programação?«Pois é uma linguagem de programação avançada«Pois é uma linguagem fácil de aprender«Pois é um software de programação«Pois é um hardware de programação«B«Portugol«1
+O«C03Q05«O que são loops em Portugol?«São erros de programação«São variáveis«São estruturas que permitem a execução repetida de um bloco de código«São funções«C«Portugol«1
+O«C04Q01«O que é programação básica?«É um tipo de hardware«É um tipo de software«É o nível inicial de programação«É um tipo de linguagem de programação«C«Programação«1
+O«C04Q02«O que são Arrays na programação?«São erros de programas«São variáveis«São funções«São estruturas de dados«D«Programação«1
+O«C04Q03«O que são operadores aritméticos em Portugol?«São erros de programação«São variáveis«São funções«São símbolos usados para realizar operações matemáticas«D«Portugol«1
+O«C04Q04«O que são Bibliotecas em Portugol?«São coleções de livros sobre programação«São coleções de funções e procedimentos que podem ser usados por outros programas«São coleções de variáveis«São coleções de erros de programação«B«Portugol«1
+O«C04Q05«O que é depuração?«O processo de encontrar e corrigir erros em um programa«O processo de criar um programa«O processo de executar um programa«O processo de eliminar um programa«A«Programação«1
+O«C05Q01«O que é uma função em programação?«Um conjunto de instruções que realiza uma tarefa específica«Um conjunto de instruções que é acionado quando ocorre um erro no programa«Um conjunto de instruções que possui a capacidade de armazenar números«Um conjunto de instruções  que possui a capacidade de armazenar arrays«A«Programação«1
+O«C05Q02«O que é uma String em linguagem de Programação?«É um tipo de variável que armazena texto«É um tipo de variável que armazena valores numéricos«É um tipo de variável que armazena valores lógicos«É um tipo de variável que armazena arrays«A«Programação«1
+O«C05Q03«O que é um Boolean em linguagem de Programação?«É um tipo de variável que armazena texto«É um tipo de variável que armazena valores numéricos«É um tipo de variável que armazena valores lógicos«É um tipo de variável que armazena arrays«C«Programação«1
+O«C05Q04«O que é um operador de atribuição em Portugol?«É um operador que realiza operações matemáticas«É um operador que compara dois valores«É um operador que assinala um valor a uma variável«É um operador que realiza operações lógicas«C«Portugol«1
+O«C05Q05«O que é um operador lógico em Portugol?«É um operador que realiza operações matemáticas«É um operador que compara dois valores«É um operador que atribui um valor a uma variável«É um operador que realiza operações textuais«B«Portugol«1
+S«C06Q01«Ao informar o valor 10, qual será o resultado da última mensagem do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% import java.util.Scanner; %SL% class Prog { %SL% Scanner sc = new Scanner(System.in); %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% System.out.println("Informe um valor"); %SL% int x = sc.nextInt(); %SL% System.out.println("Seu valor foi " + x); %SL% } %SL% }«Seu valor foi 10«Programação«2
+S«C06Q02«Ao informar o valor 18, qual será o resultado da mensagem do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% import java.util.Scanner; %SL% class Prog { %SL% Scanner sc = new Scanner(System.in); %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% System.out.println("Informe uma idade:"); %SL% int idade = sc.nextInt(); %SL% if (idade > 18) { %SL% System.out.println("Voce eh um adulto"); %SL% } else { %SL% System.out.println("Voce nao eh um adulto"); %SL% } %SL% } %SL% }«Voce nao eh um adulto«Programação«2
+S«C06Q03«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% boolean a = false; %SL% if (a = 10 > 5) { %SL% System.out.println("Ola"); %SL% } else %SL% System.out.println("Oi"); %SL% } %SL% }«Ola«Programação«2
+S«C06Q04«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% if (true) { ; } else %SL% System.out.println("Teste"); %SL% ;;;;; %SL% System.out.println("Oi");;;;;;; %SL% }%SL% }«Oi«Programação«2
+S«C06Q05«Qual será o resultado da mensagem do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% if (true); %SL% else %SL% System.out.println("Ola"); %SL% System.out.println("Foo"); } %SL% }«Foo«Programação«2
+﻿S«C06Q06«Qual será o resultado da mensagem do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% byte a = 010; %SL% switch (a) { %SL% case 'a': System.out.println("Sou 1"); break; %SL% case 10: System.out.println("Sou 2"); break; %SL% case 8: System.out.println("Sou 3"); break; %SL% case 0xC: System.out.println("Sou 4"); break; %SL% default: System.out.println("Sou Nada"); break; %SL% } %SL% } %SL% }«Sou 3«Programação«2
+﻿S«C06Q07«Qual será o resultado da mensagem do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% byte c = 12; %SL% while (c > 0) { %SL% System.out.print("A"); %SL% c -= 1; %SL% } %SL% } %SL% }«AAAAAAAAAAAA«Programação«2
+﻿S«C06Q08«Qual será o resultado da mensagem do seguinte código (U se EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% byte b = 0; %SL% while (b < 10) { %SL% b += 1; %SL% } %SL% System.out.println(b); %SL% } %SL% }«10«Programação«2
+﻿S«C06Q09«Qual será o resultado da mensagem do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% int b = 0; %SL% do { %SL% b += 1; %SL% } while (b < 10); %SL% System.out.println(b); %SL% } %SL% }«10«Programação«2
+﻿S«C06Q10«Qual será o resultado da mensagem do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% class Prog { %SL% public static void main(String [] args) { %SL% new Prog().executar(); %SL% } %SL% public void executar() { %SL% byte c = 0; %SL% while (c < 6) { %SL% if (c % 2 == 0) { %SL% System.out.print("P"); %SL% } else { %SL% System.out.print("I"); %SL% } %SL% c += 1; %SL% } %SL% } %SL% }«PIPIPI«Programação«2

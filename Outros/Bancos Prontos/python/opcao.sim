@@ -1,6 +1,10 @@
 TITULO=Python I
 TEMPO=2*60*60
-TOTAL_QUESTAO=10
-AC=Básico;Estrutura de Dados;Funções;Comandos;Arquivos
+TOTAL_QUESTAO_O=14
+TOTAL_QUESTAO_S=4
+AC=Básico;Estrutura de Dados;Funções;Comandos;Arquivos;Programação
 AREA_ESCOLHIDA=
-SEMESTRE=1
+SEMESTRE=2
+NOTA_OBJ=6
+NOTA_SUB=4
+VE_FRAUDE=0

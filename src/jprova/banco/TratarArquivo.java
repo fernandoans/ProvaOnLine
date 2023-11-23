@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
@@ -86,6 +87,7 @@ public class TratarArquivo {
 			}
 			fecharDatabase();
 		}
+		Collections.shuffle(lista);
 		return lista;
 	}
 	
@@ -169,7 +171,8 @@ public class TratarArquivo {
 				"INSERT INTO questoes (tipo, identificacao, pergunta, " +
 				"opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		String linMnt = "";
+		String linMnt = ""; 
+		String tok = "";
 		while ((linMnt = arquivo.readLine()) != null) {
 			if (linMnt.charAt(0) == '%' || linMnt.charAt(1) == '%') {
 				continue;
@@ -180,8 +183,11 @@ public class TratarArquivo {
 			StringTokenizer strTok = new StringTokenizer(linMnt, "«");
 			String tipo = strTok.nextToken();
 			pstm.setString(1, tipo);  // tipo
-			pstm.setString(2, strTok.nextToken());  // identificacao
-			pstm.setString(3, strTok.nextToken()); // pergunta
+			tok = strTok.nextToken();
+			System.out.println(tok);
+			pstm.setString(2, tok);  // identificacao
+			tok = strTok.nextToken();
+			pstm.setString(3, tok); // pergunta
 			if (tipo.equals("O")) { // Questoes objetivas 
 				pstm.setString(4, strTok.nextToken()); // opcaoA
 				pstm.setString(5, strTok.nextToken()); // opcaoB
@@ -195,9 +201,12 @@ public class TratarArquivo {
 				pstm.setString(5, ""); // opcaoB
 				pstm.setString(6, ""); // opcaoC
 				pstm.setString(7, ""); // opcaoD
-				pstm.setString(8, strTok.nextToken());  // resposta
-				pstm.setString(9, strTok.nextToken());  // area
-				pstm.setInt(10, Integer.parseInt(strTok.nextToken()));  // semestre
+				tok = strTok.nextToken();
+				pstm.setString(8, tok);  // resposta
+				tok = strTok.nextToken();
+				pstm.setString(9, tok);  // area
+				tok = strTok.nextToken();
+				pstm.setInt(10, Integer.parseInt(tok));  // semestre
 			}
 			pstm.executeUpdate();
 			total++;
