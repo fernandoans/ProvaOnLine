@@ -5,6 +5,7 @@ import java.util.List;
 import java.awt.event.*;
 import javax.swing.*;
 
+import jprova.antifraude.BloqueiaTeclas;
 import jprova.banco.Questao;
 import jprova.banco.TratarArquivo;
 import jprova.janela.Desempenho;
@@ -409,6 +410,7 @@ public class Inicial extends JFrame implements Runnable {
 	}
 
 	public static void main(String args[]) {
+		BloqueiaTeclas.bloquear(); // They shall not pass!
 		Atributo.carAtributo();
 		new SobreSistema();
 		new Inicial();

@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: lib/hsqldb.jar lib/itextpdf-5.1.1.jar
+Class-Path: lib/hsqldb.jar lib/itextpdf-5.1.1.jar lib/jna-5.15.0.jar lib/jna-plataform-5.15.0.jar
 Main-Class: jprova.Inicial
 
