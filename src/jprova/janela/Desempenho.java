@@ -8,7 +8,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import javax.swing.*;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,11 +15,10 @@ import java.util.Locale;
  * Mostrar o Desempenho
  * @author Fernando
  */
-@SuppressWarnings("serial")
 public class Desempenho extends JDialog {
 
 	public Desempenho(List<Questao> questoes, int totalTempo) {
-		LOCAL = new Locale("pt", "BR");
+        Locale LOCAL = new Locale("pt", "BR");
 		FORMAT = new DecimalFormat("##0.00", new DecimalFormatSymbols(LOCAL));
 
 		labAC = new JLabel[Atributo.ac.size()];
@@ -36,7 +34,7 @@ public class Desempenho extends JDialog {
 		setTitle("Desempenho");
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(new java.awt.Color(238, 238, 238));
-		setSize(600, 400);
+		setSize(650, 420);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setModal(true);
@@ -70,11 +68,10 @@ public class Desempenho extends JDialog {
 		getContentPane().add(MntComponents.getJLabel("Por \301rea de conhecimento:", 10, 150, 220, 13), null);
 		int posTop = 175;
 		for (int i = 0; i < Atributo.ac.size(); i++) {
-			labAC[i] = MntComponents.getJLabel((new StringBuilder(
-				String.valueOf((String) Atributo.ac.get(i)))).append(": ")
-				.append(aAC[i]).append(" de ").append(tAC[i]).append(" (")
-				.append(mstPercentual(aAC[i], tAC[i])).append(" %)")
-				.toString(), (i % 2 == 0)?10:300, posTop, 280, 13);
+			labAC[i] = MntComponents.getJLabel(Atributo.ac.get(i) +
+                    ": " +
+                    aAC[i] + " de " + tAC[i] + " (" +
+                    mstPercentual(aAC[i], tAC[i]) + " %)", (i % 2 == 0)?10:300, posTop, 280, 13);
 			getContentPane().add(labAC[i], null);
 			if (i % 2 != 0) posTop += 15;
 		}
@@ -84,13 +81,9 @@ public class Desempenho extends JDialog {
 		edtNome = new JTextField("");
 		edtNome.setBounds(new java.awt.Rectangle(90, 320, 300, 30));
 		getContentPane().add(edtNome, null);
-		
-		btSalvar = MntComponents.getJButtonTxt("Salvar", 490, 320, 100, 30, 
-			new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					salvar();
-				}
-			});
+
+        JButton btSalvar = MntComponents.getJButtonTxt("Salvar", 490, 320, 100, 30,
+                e -> salvar());
 		getContentPane().add(btSalvar, null);
 		addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
@@ -106,7 +99,7 @@ public class Desempenho extends JDialog {
 
 	private String mstPercentual(int val1, int val2) {
 		return (val2 == 0)?"0,00":
-			FORMAT.format(((double) val1 * 100D) / (double) val2).toString();
+                FORMAT.format(((double) val1 * 100D) / (double) val2);
 	}
 
 	private void salvar() {
@@ -117,43 +110,41 @@ public class Desempenho extends JDialog {
 			relatorio.setMedia(labMedia.getText());
 			relatorio.setAcertadas(labAcertadas.getText());
 			relatorio.setPercentual(labPercentual.getText());
-			relatorio.salvar(notaProva);
+			relatorio.salvar(notaProva, edtNome.getText());
 			JOptionPane.showMessageDialog(this,
-				"O arquivo 'desempenho.pdf' foi salvo corretamente.");
+				"Arquivo foi salvo corretamente. Feche a aplicação!");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this,
-				"Erro na Gera\347\343o do Arquivo de Desempenho", "Erro", 0);
+				"Erro na Gera\347\343o do Arquivo de Desempenho", "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	private void computarAcertos() {
 		totalFeitos = 0;
 		notaProva = 0.0;
-		for (Iterator<Questao> iterator = questoes.iterator(); iterator.hasNext();) {
-			Questao qst = (Questao) iterator.next();
-			if (qst.getOpcaoEscolhida().length() > 0)
-				totalFeitos++;
-			for (int i = 0; i < Atributo.ac.size(); i++) {
-				if (!qst.getArea().equals(Atributo.ac.get(i)))
-					continue;
-				tAC[i]++;
-				break;
-			}
-			if (qst.isCorrigir()) {
-				for (int i = 0; i < Atributo.ac.size(); i++) {
-					if (!qst.getArea().equals(Atributo.ac.get(i)))
-						continue;
-					aAC[i]++;
-					break;
-				}
-				acerto++;
-				notaProva += qst.getValorQst();
-			}
-		}
+        for (Questao qst : questoes) {
+            if (!qst.getOpcaoEscolhida().isEmpty())
+                totalFeitos++;
+            for (int i = 0; i < Atributo.ac.size(); i++) {
+                if (!qst.getArea().equals(Atributo.ac.get(i)))
+                    continue;
+                tAC[i]++;
+                break;
+            }
+            if (qst.isCorrigir()) {
+                for (int i = 0; i < Atributo.ac.size(); i++) {
+                    if (!qst.getArea().equals(Atributo.ac.get(i)))
+                        continue;
+                    aAC[i]++;
+                    break;
+                }
+                acerto++;
+                notaProva += qst.getValorQst();
+            }
+        }
 	}
 
-	private final Locale LOCAL;
-	private final DecimalFormat FORMAT;
+    private final DecimalFormat FORMAT;
 	
 	private double notaProva = 0.0;
 	private JTextField edtNome;
@@ -161,12 +152,11 @@ public class Desempenho extends JDialog {
 	private JLabel labAcertadas;
 	private JLabel labMedia;
 	private JLabel labPercentual;
-	private JButton btSalvar;
-	private JLabel labAC[];
-	private List<Questao> questoes;
-	private int totalTempo;
+    private final JLabel[] labAC;
+	private final List<Questao> questoes;
+	private final int totalTempo;
 	private int totalFeitos;
 	private int acerto;
-	private int aAC[];
-	private int tAC[];
+	private final int[] aAC;
+	private final int[] tAC;
 }

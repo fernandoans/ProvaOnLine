@@ -9,12 +9,10 @@ public class Tempo {
 
 	public Tempo() {
 		intHora = 0;
-		resHora = intHora;
-	}
+    }
 
 	public Tempo(int intHora) {
-		this.intHora = 0;
-		resHora = this.intHora;
+		resHora = 0;
 		this.intHora = intHora;
 	}
 
@@ -51,9 +49,9 @@ public class Tempo {
 				segHora = resHora - minHora * 60;
 			}
 		}
-		return (new StringBuilder()).append(Atributo.colocaZero(horHora, 2))
-			.append(":").append(Atributo.colocaZero(minHora, 2))
-			.append(":").append(Atributo.colocaZero(segHora, 2)).toString();
+		return Atributo.colocaZero(horHora, 2) +
+                ":" + Atributo.colocaZero(minHora, 2) +
+                ":" + Atributo.colocaZero(segHora, 2);
 	}
 
 	private int intHora;

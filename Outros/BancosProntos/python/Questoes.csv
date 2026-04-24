@@ -1,0 +1,85 @@
+﻿% Arquivo de Importação para Python I
+﻿% ------------------------------------------------------------------------
+% Exemplo de Questão Objetiva:
+%   Campos: O«Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
+%   O«C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
+% Exemplo de Questão Subjetiva:
+%   Campos: S«Código«Questao«Resp«Area«Semestre
+%   S«C01Q01«Isto é teste«Sim«Conhecimentos Gerais«1
+% Exemplo de Questão Binária (S/N):
+%   Campos: S«Código«Questao«RespCerta(A/B)«Area«Semestre
+%   B«C01Q01«Isto é teste«A«Conhecimentos Gerais«1
+% Use: %SL% para saltar de linha nas perguntas.
+%      %TB% para tabulação.
+% Áreas das Questões: Básico;Estrutura de Dados;Funções;Comandos;Arquivos;Programação
+% ------------------------------------------------------------------------
+O«C01Q01«Qual o tipo de dado para o valor “Hello” em Python?«int«float«string«boolean«C«Básico«1
+O«C01Q02«Como converter um número inteiro 10 para um número de ponto flutuante?«float(10)«Int.to_float(10)«10.to_float()«10.float()«A«Básico«1
+O«C01Q03«Qual o resultado da expressão: 3 == 3.0?«True«False«Erro de Sintaxe«Erro de Execução«A«Básico«1
+O«C01Q04«Qual a saída do seguinte código: print(type(10))«<int>«<class ‘list’>«<integer>«10«B«Básico«1
+O«C01Q05«Qual a sintaxe em Python para criar um string contendo várias linhas?«Usando aspas simples«Usando aspas duplas«Usando três aspas simples ou duplas«Não é possível realizar tal ação«C«Básico«1
+O«C01Q06«Como se inicia um comentário em Python?«#«//«/*«<!--«A«Básico«1
+O«C01Q07«Qual é a função em Python que gera um intervalo de números?«range()«int()«float()«str()«A«Básico«1
+O«C01Q08«Qual palavra-chave em Python é usada para definir uma função?«func«def«function«new«B«Básico«1
+O«C01Q09«Como você pode verificar o tipo de uma variável chamada `numero`?«type(numero)«typeof numero«var_type(numero)«check(numero)«A«Básico«1
+O«C01Q10«Em Python, qual operador é usado para calcular o resto da divisão?«%«/«//«&«A«Básico«1
+O«C02Q01«Qual é a diferença entre uma lista e uma tupla?«As listas são ordenadas e as tuplas não«As tuplas são ordenadas e as listas não«As listas são mutáveis e as tuplas não«As tuplas são mutáveis e as listas não«C«Estrutura de Dados«1
+O«C02Q02«Como podemos adicionar um elemento em uma lista?«lista.add(elemento)«lista.append(elemento)«lista.insert(elemento)«lista.push(elemento)«B«Estrutura de Dados«1
+O«C02Q03«Qual a saída do seguinte código: print(type({1,2,3}))?«<class ‘list’>«<class ‘tuple’>«<class ‘set’>«<class ‘dict’>«C«Estrutura de Dados«1
+O«C02Q04«Como podemos acessar o valor de um dicionário, chamado dados, através de sua chave?«dados[chave]«dados.get(chave)«dados.key(chave)«Duas respostas estão corretas«D«Estrutura de Dados«1
+O«C02Q05«Qual é a diferença entre um conjunto e uma lista?«As listas são ordenadas e os conjuntos não«Os conjuntos são ordenados e as listas não«As listas permitem duplicatas e os conjuntos não«Os conjuntos permitem duplicatas e as listas não«C«Estrutura de Dados«1
+O«C02Q06«Qual método em Python é usado para remover o último elemento de uma lista?«.pop()«.delete()«.remove()«.cut()«A«Estrutura de Dados«1
+O«C02Q07«Como você pode criar uma cópia de uma lista em Python para evitar a alteração da lista original?«Usando o método .copy()«Atribuindo a lista a uma nova variável«Usando o método .duplicate()«Usando o método .clone()«A«Estrutura de Dados«1
+O«C02Q08«Em Python, que tipo de dados é usado para armazenar dados de chave e valor?«Lista«Tupla«Conjunto«Dicionário«D«Estrutura de Dados«1
+O«C02Q09«Qual é a sintaxe correta para criar um conjunto vazio em Python?«set = ()«set = []«set = {}«set = set()«D«Estrutura de Dados«1
+O«C02Q10«Como podemos combinar duas listas em Python?«Usar + ou .extend()«Usar .merge()«Usar .join()«Usar .combine()«A«Estrutura de Dados«1
+O«C03Q01«No Python não existe a estrutura switch, esta foi substituída por:«if-elif-else«lambda«case«select«A«Comandos«1
+O«C03Q02«Qual o comando é usado para testar uma condição lógica e executar um determinado bloco de código com base nesta condição?«if«else«select«switch«A«Comandos«1
+O«C03Q03«Qual comando é responsável por executar um bloco de código repetidamente com base em uma condicional?«for«loop«do«while«D«Comandos«1
+O«C03Q04«Qual comando é responsável para percorrer uma sequência (como lista, tupla, dicionário, conjunto ou string)?«for«loop«do«while«A«Comandos«1
+O«C03Q05«Qual o comando usado para ignorar a iteração atual de um laço e passar para a próxima?«skip«break«continue«pass«C«Comandos«1
+O«C03Q06«Como você pode parar um loop antes que ele tenha passado por todos os itens?«skip«break«continue«pass«B«Comandos«1
+O«C03Q07«Qual comando é usado para capturar e tratar exceções em Python?«try-catch«error«onerror«try-except«D«Comandos«1
+O«C03Q08«Qual o comando usado para finalizar uma função e retornar um valor?«end«return«exit«stop«B«Comandos«1
+O«C03Q09«Qual a declaração utilizada para realizar algum código independentemente do resultado dos blocos try e except?«finally«always«default«confirm«A«Comandos«1
+O«C03Q10«Em uma função como fazemos um duplo retorno para as variáveis "a" e "b"?«return a:b«return a,b«return a e na linha seguinte return b«result a b«B«Comandos«1
+O«C04Q01«Como podemos definir uma função em python?«def nome():«function nome():«nome = function():«nome = func():«A«Funções«1
+O«C04Q02«O que é uma função lambda?«Uma função que pode ter qualquer número de argumentos mas apenas uma expressão«Uma função que não tem nome«Uma função que é definida sem a palavra-chave def«Uma função que pode ser definida na linha da instrução«E«Funções«1
+O«C04Q03«Como podemos obter a data e hora atual em Python a partir da importação da biblioteca datetime?«datetime.datetime.now()«datetime.now()«now()«date.now()«A«Funções«1
+O«C04Q04«Qual a utilidade da função Map em Python?«Mapeia uma função para cada elemento de uma lista«Mapeia uma função para cada chave de um dicionário«Mapeia uma função para cada elemento de um conjunto«Mapeia uma função para cada elemento de uma tupla«A«Funções«1
+O«C04Q05«O que é list comprehension em Python?«Uma maneira concisa de criar listas.«Uma maneira de aplicar uma função a cada elemento de uma lista.«Uma maneira de filtrar elementos de uma lista«Uma forma de reduzir um lista a um único elemento«A«Funções«1
+O«C05Q01«Como criar um arquivo de texto em Python?«open(‘nomArq.txt’, ‘w’)«create(‘nomArq.txt’, ‘w’)«file(‘nomArq.txt’, ‘w’)«new(‘nomArq.txt’, ‘w’)«A«Arquivos«1
+O«C05Q02«Como ler um arquivo de texto em Python?«read(‘nomArq.txt’, ‘r’)«open(‘nomArq.txt’, ‘r’).read()«file(‘nomArq.txt’, ‘r’).read()«new(‘nomArq.txt’, ‘r’).read()«B«Arquivos«1
+O«C05Q03«Como gravar um arquivo de texto em Python?«write(‘nomArq.txt’, ‘dados’)«open(‘nomArq.txt’, ‘w’).write(‘dados’)«file(‘nomArq.txt’, ‘w’).write(‘dados’)«new(‘nomArq.txt’, ‘w’).write(‘dados’)«B«Arquivos«1
+O«C05Q04«Qual o comando usado para fechar um arquivo em Python?«break()«continue()«stop()«close()«D«Arquivos«1
+O«C05Q05«Qual a utilidade do comando try em Python?«Tenta executar um bloco de código e para se encontrar um erro.«Tenta executar um bloco de código e ignora os erros.«Tenta executar um bloco de código e levanta uma exceção se encontrar um erro.«Tenta executar um bloco de código e aborta o programa se encontrar um erro.«C«Comandos«1
+S«C06Q01«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = 2 %SL% for a in range(1,10): %SL% %TB% if (a % 2 == 0): %SL% %TB% %TB% c += 1 %SL% print(c)«6«Programação«1
+S«C06Q02«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = -2 %SL% for a in range(1,10): %SL% %TB% if (a % 2 == 0): %SL% %TB% %TB% c += 1 %SL% print(c)«2«Programação«1
+S«C06Q03«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% def normal(n): %SL% %TB% if n == 0: %SL% %TB% %TB% return "Ola" %SL% print(normal(0))«Ola«Programação«1
+S«C06Q04«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% q = lambda x,y: x**y; %SL% print(q(2,3));«8«Programação«1
+S«C06Q05«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% for v in range(7,3,-1): %SL% %TB% print(v,end="") %SL% if v == 4: %SL% %TB% print("Oi");«7654Oi«Programação«1
+S«C06Q06«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% for i in range(1,3): %SL% %TB% print("Foo",end=""); %SL% print("Bar")«FooFooBar«Programação«1
+S«C06Q07«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% def x(): %SL% %TB% a = 2 %SL% %TB% if (a == 2): %SL% %TB% %TB% print("Foo") %SL% %TB% %TB% return %SL% %TB% print("Bar") %SL% x()«Foo«Programação«1
+S«C06Q08«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = 1 %SL% for a in range(2,10,3): %SL% %TB% if (a % 2 != 0): %SL% %TB% %TB% c += 1 %SL% print(c)«2«Programação«1
+S«C06Q09«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = -2 %SL% for a in range(2,10,2): %SL% %TB% if (a % 2 == 0): %SL% %TB% %TB% c += 1 %SL% print(c)«2«Programação«1
+S«C06Q10«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = -2 %SL% for a in range(2,10,2): %SL% %TB% if (a % 2 != 0): %SL% %TB% %TB% c += 1 %SL% print(c)«-2«Programação«1
+B«C07Q01«Em Python, ao utilizar a função input(), o valor recebido é sempre tratado como uma string, mesmo que o usuário digite um valor numérico.«A«Básico«1
+B«C07Q02«Em Python, ao utilizar a função input(), o valor recebido é sempre tratado como o tipo da entrada, por exemplo se o usuário digitar um valor numérico inteiro a valor recebido será 'int'.«B«Básico«1
+B«C07Q03«Uma list (lista) é uma estrutura de dados imutável, ou seja, após criada, não é possível alterar os seus valores internos.«B«Estrutura de Dados«1
+B«C07Q04«Uma list (lista) é uma estrutura de dados mutável, ou seja, após criada, é possível alterar os seus valores internos.«A«Estrutura de Dados«1
+B«C07Q05«O comando if obriga sempre a utilização de um else logo em seguida para que o código esteja correto.«B«Comandos«1
+B«C07Q06«O else encontrado nos comandos if, for e while são opcionais.«A«Comandos«1
+B«C07Q07«No seguinte comando: %SL% for i in range(5): %SL% A variável i percorrerá os valores 0, 1, 2, 3 e 4.«A«Comandos«1
+B«C07Q08«No seguinte comando: %SL% for i in range(1,5): %SL% A variável i percorrerá os valores 1, 2 e 3.«B«Comandos«1
+B«C07Q09«Num dicionário, os dados são armazenados em pares de chave:valor, e as chaves devem ser únicas enquanto que os valores podem ser repetir.«A«Estrutura de Dados«1
+B«C07Q10«O laço while é executado repetidamente enquanto a condição especificada for True (Verdadeira).«A«Comandos«1
+B«C07Q11«Usamos o 'else' nos laços de repetição (for e while) de modo que ao sairmos com um comando 'break', este não será acionado.«A«Comandos«1
+B«C07Q12«A estrutura do tipo set permite armazenar vários elementos iguais (duplicados) e mantém a ordem em que foram inseridos.«B«Estrutura de Dados«1
+B«C07Q13«Para imprimir uma frase que junta texto e um número inteiro usamos o sinal de +, como por exemplo em: %SL%  print("Total: " + 10) %SL% O Python realiza a conversão automática do número para texto sem dar erro.«B«Básico«1
+B«C07Q14«As tuplas (tuple) são definidas utilizando parênteses, como em: %SL% minha_tupla = (1, 2, 3) %SL% e não é permitido que os seus itens sejam alterados após sua criação.«A«Estrutura de Dados«1
+B«C07Q15«Em Python, a indentação (o recuo do texto) é opcional e serve apenas para organizar visualmente o código, não afetando a lógica.«B«Conhecimentos Gerais«1
+B«C07Q16«O operador % (módulo) é utilizado para obter o resto de uma divisão entre dois números.«A«Conhecimentos Gerais«1
+B«C07Q17«O método .append() é utilizado para adicionar um novo elemento no início de uma lista.«B«Estrutura de Dados«1
+B«C07Q18«O operador lógico 'and' só retorna True se todas as condições comparadas forem verdadeiras ao mesmo tempo.«A«Básico«1
+B«C07Q19«Em Python, é permitido começar o nome de uma variável com um underscore, por exemplo: %SL% _valor = 50«A«Básico«1
+B«C07Q20«Em Python, é permitido começar o nome de uma variável com um número, por exemplo: %SL% 50valor = 50«B«Básico«1

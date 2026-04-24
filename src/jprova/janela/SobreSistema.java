@@ -12,7 +12,6 @@ import jprova.util.Atributo;
  * @author Fernando Anselmo
  * @version 1.0
  */
-@SuppressWarnings("serial")
 public class SobreSistema extends JDialog {
 
 	public SobreSistema() {
@@ -24,26 +23,22 @@ public class SobreSistema extends JDialog {
 		setModal(true);
 		setResizable(false);
 		
-		JLabel labLogo = new JLabel("", Atributo.getImage("ProvaOnLine2.png"), 0);
+		JLabel labLogo = new JLabel("", Atributo.getImage("ProvaOnLine2.png"), SwingConstants.CENTER);
 		labLogo.setBounds(new Rectangle(10, 17, 380, 400));
 		getContentPane().add(labLogo, null);
 
-		JLabel lab01 = new JLabel(Atributo.titulo, null, 0);
+		JLabel lab01 = new JLabel(Atributo.titulo, null, SwingConstants.CENTER);
 		lab01.setBounds(new Rectangle(10, 410, 350, 38));
-		lab01.setFont(new Font("Arial", 1, 20));
+		lab01.setFont(new Font("Arial", Font.BOLD, 20));
 		getContentPane().add(lab01, null);
 
-		JLabel lab02 = new JLabel("2023 \251 Prova OnLine", null, 0);
+		JLabel lab02 = new JLabel(Atributo.COPYRIGHT, null, SwingConstants.CENTER);
 		lab02.setBounds(new Rectangle(10, 450, 350, 13));
-		lab02.setFont(new Font("Arial", 2, 12));
+		lab02.setFont(new Font("Arial", Font.ITALIC, 12));
 		getContentPane().add(lab02, null);
 
 		JButton iniciar = MntComponents.getJButtonTxt("Iniciar Simulado", 110, 480, 150, 25,
-			new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					aoFechar();
-				}
-			});
+                e -> aoFechar());
 		getContentPane().add(iniciar, null);
 
 		setVisible(true);

@@ -2,12 +2,11 @@ package jprova.janela;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import javax.swing.JLabel;
 
@@ -26,8 +25,8 @@ import jprova.util.Atributo;
 
 public class Relatorio {
 
-	private JLabel labAC[];
-	private List<Questao> questoes;
+	private final JLabel[] labAC;
+	private final List<Questao> questoes;
 	private Questao qst;
     private double notaProva = 0.0;
 	
@@ -38,22 +37,21 @@ public class Relatorio {
 	private String percentual;
 	private Document document;
 
-	private final Locale LOCAL;
-	private final DecimalFormat FORMAT;
+    private final DecimalFormat FORMAT;
 
-	public Relatorio(JLabel labAC[], List<Questao> questoes) {
+	public Relatorio(JLabel[] labAC, List<Questao> questoes) {
 		this.labAC = labAC;
 		this.questoes = questoes;
-		LOCAL = new Locale("pt", "BR");
+        Locale LOCAL = new Locale("pt", "BR");
 		FORMAT = new DecimalFormat("##0.00", new DecimalFormatSymbols(LOCAL));
 	}
 	
-	public void salvar(double notaProva) throws DocumentException, MalformedURLException, IOException {
+	public void salvar(double notaProva, String nome) throws DocumentException, IOException {
 		this.notaProva = notaProva;
 		document = new Document(PageSize.A4, 50F, 50F, 50F, 50F);
 		@SuppressWarnings("unused")
 		PdfWriter writer = PdfWriter.getInstance(document,
-			new FileOutputStream("desempenho.pdf"));
+			new FileOutputStream("Desemp_" + letras(nome) + ".pdf"));
 		document.open();
 		document.add(Image.getInstance(Atributo.getResource("jprova/imagens/ProvaOnLine.jpg")));
 
@@ -62,6 +60,17 @@ public class Relatorio {
 		gerarResumoQuestoes();
 
 		document.close();
+	}
+	
+	private String letras(String nome) {
+		nome = nome.toUpperCase().trim();
+		StringBuilder ret = new StringBuilder("" + nome.charAt(0));
+		for (int i = 1; i < nome.length(); i++) {
+			if (nome.charAt(i) == ' ') {
+				ret.append(nome.charAt(i + 1));
+			}
+		}
+		return ret.toString();
 	}
 	
 	private void gerarCapa() throws DocumentException {
@@ -95,29 +104,32 @@ public class Relatorio {
 	public void gerarResumoQuestoes() throws DocumentException {
 		document.add(new Paragraph("Resumo das Quest\365es", FontFactory
 				.getFont("Helvetica", 18F, 1, new BaseColor(0, 69, 98))));
-		boolean acertou = false;
-		for (Iterator<Questao> iterator = questoes.iterator(); iterator.hasNext();) {
-			qst = (Questao) iterator.next();
-			acertou = qst.isCorrigir();
-			
-			document.add(new Paragraph(
-				qst.getIdentificacao() + 
-				" - " + getResultado(acertou)  + 
-				" - Área: " + qst.getArea())); 
+		boolean acertou;
+        for (Questao questoe : questoes) {
+            qst = questoe;
+            acertou = qst.isCorrigir();
 
-			String resultado;
-			if (qst.getTipo() == 'O') {
+            document.add(new Paragraph(
+                    qst.getIdentificacao() +
+                            " - " + getResultado(acertou) +
+                            " - Área: " + qst.getArea()));
+
+            String resultado;
+            if (qst.getTipo() == 'O') {
 				document.add(new Paragraph(getMarcouObj(acertou), getFontePadrao()));
 				resultado = getResObj();
-			} else {
-				document.add(new Paragraph(getMarcouSubj(), getFontePadrao()));
-				resultado = qst.getResposta();
-			}
-			document.add(new Paragraph("Pergunta:", getFontePadrao()));
-			document.add(new Paragraph(qst.getPergunta(), getFontePadrao()));
-			document.add(new Paragraph("Resposta Correta:", getFontePadrao()));
-			document.add(new Paragraph(resultado, getFontePadrao()));
-		}
+			} else if (qst.getTipo() == 'B') {
+				document.add(new Paragraph(getMarcouBin(acertou), getFontePadrao()));
+				resultado = getResBin();
+            } else { // Tanto S como B
+                document.add(new Paragraph(getMarcouSubj(), getFontePadrao()));
+                resultado = qst.getResposta();
+            }
+            document.add(new Paragraph("Pergunta:", getFontePadrao()));
+            document.add(new Paragraph(qst.getPergunta(), getFontePadrao()));
+            document.add(new Paragraph("Resposta Correta:", getFontePadrao()));
+            document.add(new Paragraph(resultado, getFontePadrao()));
+        }
 	}
 	
 	private Font getFontePadrao() {
@@ -127,31 +139,41 @@ public class Relatorio {
 	private String getResultado(boolean acertou) { 
 		if (acertou)
 			return "Correta";
-		if (qst.getOpcaoEscolhida().length() == 0)
+		if (qst.getOpcaoEscolhida().isEmpty())
 			return "N\343o respondida";
 		return "Incorreta";
 	}
 	
 	private String getResObj() {
-		switch (qst.getResposta().charAt(0)) {
-		case 65: // 'A'
-			return qst.getOpcaoA();
-		case 66: // 'B'
-			return qst.getOpcaoB();
-		case 67: // 'C'
-			return qst.getOpcaoC();
-		case 68: // 'D'
-			return qst.getOpcaoD();
-		case 69: // 'E'
-			return "Todas as questões acima.";
-		case 70: // 'F'
-			return "Nenhuma das questões acima.";
-		}
-		return "";
+        return switch (qst.getResposta().charAt(0)) {
+            case 65 -> // 'A'
+                    qst.getOpcaoA();
+            case 66 -> // 'B'
+					qst.getOpcaoB();
+            case 67 -> // 'C'
+					qst.getOpcaoC();
+            case 68 -> // 'D'
+					qst.getOpcaoD();
+            case 69 -> // 'E'
+					Atributo.OPCAO_E;
+            case 70 -> // 'F'
+					Atributo.OPCAO_F;
+            default -> "";
+        };
+    }
+
+	private String getResBin() {
+		return switch (qst.getResposta().charAt(0)) {
+			case 65 -> // 'A'
+					Atributo.OPCAO_VERDADEIRO;
+			case 66 -> // 'B'
+					Atributo.OPCAO_FALSO;
+			default -> "";
+		};
 	}
-	
+
 	private String getMarcouObj(boolean acertou) {
-		if (qst.getOpcaoEscolhida().length() == 0)
+		if (qst.getOpcaoEscolhida().isEmpty())
 			return "Você não respondeu"; 
 
 		String ret = "Você marcou " + qst.getOpcaoEscolhida();
@@ -160,9 +182,20 @@ public class Relatorio {
 		}
 		return ret;
 	}
-	
+
+	private String getMarcouBin(boolean acertou) {
+		if (qst.getOpcaoEscolhida().isEmpty())
+			return "Você não respondeu";
+
+		String ret = "Você marcou " + (Objects.equals(qst.getOpcaoEscolhida(), "A")?Atributo.OPCAO_VERDADEIRO:Atributo.OPCAO_FALSO);
+		if (!acertou) {
+			ret += " e a opção correta é " + (Objects.equals(qst.getResposta(), "A")?Atributo.OPCAO_VERDADEIRO:Atributo.OPCAO_FALSO);
+		}
+		return ret;
+	}
+
 	private String getMarcouSubj() { 
-		if (qst.getOpcaoEscolhida().length() == 0) {
+		if (qst.getOpcaoEscolhida().isEmpty()) {
 			return "Você não respondeu"; 
 		}
 		return "Você escreveu: " + qst.getOpcaoEscolhida();

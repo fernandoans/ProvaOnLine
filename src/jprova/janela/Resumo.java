@@ -3,28 +3,22 @@ package jprova.janela;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import jprova.util.Tempo;
 
 /**
  * Mostrar a tela Resumo
  * @author Fernando
  */
-@SuppressWarnings("serial")
 public class Resumo extends JDialog implements Runnable {
 
-    private JList<?> lista;
+    private final JList<?> lista;
     private JLabel labTempo;
-    private JButton butResumo;
-    private JButton butFinalizar;
 
     // Atributos usados
     private boolean finalizar = false;
     private boolean parar = true;
-    private Tempo tempo;
-    private Thread th = new Thread(this);
+    private final Tempo tempo;
+    private final Thread th = new Thread(this);
     private int qstAtual = -1;
     
     public Resumo(JList<?> lst, Tempo tempo) {
@@ -37,7 +31,7 @@ public class Resumo extends JDialog implements Runnable {
         this.setTitle("Resumo");
         this.getContentPane().setLayout(null);
         this.getContentPane().setBackground(new Color(238, 238, 238));
-        this.setSize(810, 440);
+        this.setSize(840, 460);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setModal(true);
@@ -55,34 +49,23 @@ public class Resumo extends JDialog implements Runnable {
         JScrollPane sp = new JScrollPane(lista);
         sp.setBounds(new Rectangle(10, 60, 780, 300));
         this.getContentPane().add(sp, null);
-        lista.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent evt) {
-                if (evt.getValueIsAdjusting()) {
-                    return;
-                }
-                qstAtual = evt.getFirstIndex() + 1;
+        lista.addListSelectionListener(evt -> {
+            if (evt.getValueIsAdjusting()) {
+                return;
             }
+            qstAtual = evt.getFirstIndex() + 1;
         });
 
         // Botoes
-        butResumo = MntComponents.getJButtonTxt("Voltar", 10, 370, 100, 30,
-        	new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                aoFechar();
-	            }
-	        });
+        JButton butResumo = MntComponents.getJButtonTxt("Voltar", 10, 370, 100, 30,
+                e -> aoFechar());
         this.getContentPane().add(butResumo, null);
 
-        butFinalizar = MntComponents.getJButtonTxt("Finalizar", 687, 370, 100, 30, 
-        	new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                finalizar = true;
-	                aoFechar();
-	            }
-	        });
+        JButton butFinalizar = MntComponents.getJButtonTxt("Finalizar", 687, 370, 100, 30,
+                e -> {
+                    finalizar = true;
+                    aoFechar();
+                });
         this.getContentPane().add(butFinalizar, null);
 
         this.addWindowListener(new WindowAdapter() {
@@ -108,7 +91,7 @@ public class Resumo extends JDialog implements Runnable {
     public void run() {
         while (parar && tempo.isMaiorZero()) {
             labTempo.setText("Tempo Transcorrido: " + tempo.transHora());
-            try { th.sleep(1000); } catch (Exception e) { }
+            try { th.sleep(1000); } catch (Exception ignored) { }
         }
     }
 

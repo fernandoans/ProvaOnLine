@@ -33,7 +33,7 @@ public final class MntComponents {
 	public static JTextArea getJTextArea() {
 		JTextArea texto = new JTextArea();
 		texto.setLineWrap(true);
-		texto.setFont(new Font("Arial", 0, 16));
+		texto.setFont(new Font("Arial", Font.PLAIN, 16));
 		texto.setWrapStyleWord(true);
 		texto.setEditable(false);
 		return texto;
@@ -57,7 +57,7 @@ public final class MntComponents {
 	public static JTextField getJTextField(int p1, int p2, int p3, int p4) {
 	    JTextField texto = new JTextField();
 	    texto.setBounds(new Rectangle(p1, p2, p3, p4));
-	    texto.setFont(new Font("Arial", 0, 16));
+	    texto.setFont(new Font("Arial", Font.PLAIN, 16));
 	    return texto;
 	}
 	

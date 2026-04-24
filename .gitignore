@@ -7,7 +7,7 @@ classes/
 *.ear
 
 ### JDK ESPECÍFICO (Seu pedido) ###
-/Outros/BancosProntos/jdk-17.0.12/
+/Outros/BancosProntos/aBase/jdk-17.0.12/
 
 ### BANCO DE DADOS & LOGS (Baseado na sua estrutura) ###
 *.log

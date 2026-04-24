@@ -9,8 +9,11 @@ Banco de Questões Carregados:
   <li>Algorítmos de Programação</li>
   <li>Programação Mobile - Android</li>
   <li>Computação Distribuída</li>
+  <li>Programação OO</li>
+  <li>Programação Java</li>
   <li>Programação Python</li>
   <li>Programação Web com PHP</li>
+  <li>Eletrônica e Robótica</li>
 </ul>
 
 O programa montará uma prova com um determinado tempo, mais informações estão disponíveis na documentação. Espero que possa ser muito útil a estudantes.

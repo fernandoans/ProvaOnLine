@@ -30,10 +30,8 @@ public class TratarArquivo {
 			Class.forName("org.hsqldb.jdbcDriver");
 			con = DriverManager.getConnection("jdbc:hsqldb:file:SIMPMP.db", "sa", "");
 			return true;
-		} catch (ClassNotFoundException e) {
-			JOptionPane.showMessageDialog(null, (new StringBuilder("Erro: ")).append(e.getMessage()).toString(), "Erro", 0);
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, (new StringBuilder("Erro: ")).append(e.getMessage()).toString(), "Erro", 0);
+		} catch (ClassNotFoundException | SQLException e) {
+			JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}
         return false;
     }
@@ -51,8 +49,8 @@ public class TratarArquivo {
 				stm.close();
 				ret = true;
 			} catch (SQLException ex) {
-				System.out.println((new StringBuilder("criarDatabase: "))
-						.append(ex.getMessage()).toString());
+				System.out.println("criarDatabase: " +
+                        ex.getMessage());
 			}
 			fecharDatabase();
 		}
@@ -63,13 +61,13 @@ public class TratarArquivo {
 		try {
 			con.close();
 		} catch (SQLException ex) {
-			System.out.println((new StringBuilder("fecharDatabase: "))
-				.append(ex.getMessage()).toString());
+			System.out.println("fecharDatabase: " +
+                    ex.getMessage());
 		}
 	}
 
-	public List<Questao> obterDados(int totalQstO, int totalQstS) {
-		List<Questao> lista = new ArrayList<Questao>();
+	public List<Questao> obterDados(int totalQstO, int totalQstS, int totalQstB) {
+		List<Questao> lista = new ArrayList<>();
 		if (abrirDatabase()) {
 			try {
 				int numQst = 0;
@@ -80,10 +78,13 @@ public class TratarArquivo {
 				if (totalQstS > 0) {
 					numQst = carregarQuestoes(stm, lista, 'S', totalQstS, numQst);
 				}
+				if (totalQstB > 0) {
+					carregarQuestoes(stm, lista, 'B', totalQstB, numQst);
+				}
 				stm.close();
 			} catch (Exception ex) {
-				System.out.println((new StringBuilder("obterDados: "))
-					.append(ex.getMessage()).toString());
+				System.out.println("obterDados: " +
+                        ex.getMessage());
 			}
 			fecharDatabase();
 		}
@@ -118,7 +119,7 @@ public class TratarArquivo {
 	private String montarSql(char tipo) {
 		String monta = "SELECT tipo, identificacao, pergunta, opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre " +
 				"FROM questoes WHERE tipo = '" + tipo + "' AND semestre <= " + Atributo.semestre;
-		if (Atributo.areaEsc.length() > 0) {
+		if (!Atributo.areaEsc.isEmpty()) {
 			monta += " AND area = '" + Atributo.areaEsc + "'";
 		}
 		return monta + " ORDER BY rand()";
@@ -136,8 +137,8 @@ public class TratarArquivo {
 				res.close();
 				stm.close();
 			} catch (Exception ex) {
-				System.out.println((new StringBuilder("totalRegistro: "))
-						.append(ex.getMessage()).toString());
+				System.out.println("totalRegistro: " +
+                        ex.getMessage());
 			}
 			fecharDatabase();
 		}
@@ -171,13 +172,13 @@ public class TratarArquivo {
 				"INSERT INTO questoes (tipo, identificacao, pergunta, " +
 				"opcaoA, opcaoB, opcaoC, opcaoD, resposta, area, semestre) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		String linMnt = ""; 
-		String tok = "";
+		String linMnt;
+		String tok;
 		while ((linMnt = arquivo.readLine()) != null) {
 			if (linMnt.charAt(0) == '%' || linMnt.charAt(1) == '%') {
 				continue;
 			}
-		    if (linMnt.trim().length() == 0) {
+		    if (linMnt.trim().isEmpty()) {
 				continue;
 			}
 			StringTokenizer strTok = new StringTokenizer(linMnt, "«");

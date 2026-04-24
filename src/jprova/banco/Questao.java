@@ -15,7 +15,7 @@ public final class Questao {
 		setTipo(tipo);
 		setIdentificacao(identificacao);
 		pergunta = pergunta.replaceAll("%SL% ", ""+'\n');
-		pergunta = pergunta.replaceAll("%TB% ", ""+'\t');
+		pergunta = pergunta.replaceAll("%TB% ", "    ");
 		setPergunta(pergunta);
 		if (tipo == 'O') {
 			setOpcaoA(opcaoA);
@@ -24,16 +24,15 @@ public final class Questao {
 			setOpcaoD(opcaoD);
 			setOpcaoE("Todas as questões acima.");
 			setOpcaoF("Nenhuma das questões acima.");
+		} else if (tipo == 'B') {
+			setOpcaoA(opcaoA);
+			setOpcaoB(opcaoB);
 		}
 		setResposta(resposta);
 		setArea(area);
 		setSemestre(semestre);
 		setNumQuestao(numQuestao);
 		setOpcaoEscolhida("");
-	}
-
-	public int getNumQuestao() {
-		return numQuestao;
 	}
 
 	public void setNumQuestao(int numQuestao) {
@@ -96,17 +95,9 @@ public final class Questao {
 		this.opcaoD = opcaoD;
 	}
 
-	public String getOpcaoE() {
-		return opcaoE;
-	}
-
 	public void setOpcaoE(String opcaoE) {
 		this.opcaoE = opcaoE;
-	}
-
-	public String getOpcaoF() {
-		return opcaoF;
-	}
+    }
 
 	public void setOpcaoF(String opcaoF) {
 		this.opcaoF = opcaoF;
@@ -160,15 +151,21 @@ public final class Questao {
 		if (tipo == 'O') {
 			return ((double)Atributo.notaObj) / Atributo.totQuestaoO; 
 		}
-		return ((double)Atributo.notaSub) / Atributo.totQuestaoS; 
+		if (tipo == 'B') {
+			return ((double)Atributo.notaBin) / Atributo.totQuestaoB;
+		}
+		return ((double)Atributo.notaSub) / Atributo.totQuestaoS;
 	}
 
 	public String toString() {
-		return(new StringBuilder("  "))
-			.append(Atributo.colocaZero(numQuestao, 3)).append("    ")
-			.append(Atributo.montarTam(pergunta, 36)).append("    ")
-			.append(Atributo.montarTam(opcaoEscolhida, 44)).append("    ")
-			.append(marcar ? "Sim" : "N\343o").toString();
+		String opcEsc = opcaoEscolhida;
+		if (tipo == 'B') {
+			opcEsc = (opcaoEscolhida.equals("A"))?Atributo.OPCAO_VERDADEIRO:Atributo.OPCAO_FALSO;
+		}
+		return "  " + Atributo.colocaZero(numQuestao, 3) +
+			"    " + Atributo.montarTam(pergunta, 36) +
+			"    " + Atributo.montarTam(opcEsc, 44) +
+			"    " + (marcar ? "Sim" : "N\343o");
 	}
 
 	private int numQuestao;
@@ -180,7 +177,7 @@ public final class Questao {
 	private String opcaoC;
 	private String opcaoD;
 	private String opcaoE;
-	private String opcaoF;
+    private String opcaoF;
 	private String resposta;
 	private String area;
 	private int semestre;

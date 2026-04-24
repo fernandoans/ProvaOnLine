@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: jprova.Inicial
+Class-Path: hsqldb.jar itextpdf-5.1.1.jar
+

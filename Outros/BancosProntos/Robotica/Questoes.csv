@@ -1,0 +1,75 @@
+﻿% Arquivo de Importação para Orientação a Objetos
+% ------------------------------------------------------------------------
+% Exemplo de Questão Objetiva:
+%   Campos: O«Código«Questao«RespA«RespB«RespC«RespD«Certa«Area«Semestre
+%   O«C01Q01«Isto é teste«Sim«Não«Talvez«Depende«A«Conhecimentos Gerais«1
+% Exemplo de Questão Subjetiva:
+%   Campos: S«Código«Questao«Resp«Area«Semestre
+%   S«C01Q01«Isto é teste«Sim«Conhecimentos Gerais«1
+% Use: %SL% para saltar de linha nas perguntas. %TB% para tabulação
+% Áreas das Questões: Componente;Arduino;Lei de Ohm;Sensores;Conceitos;Prática
+% ------------------------------------------------------------------------
+O«C01Q01«O que significa a sigla LED?«Light Emitting Diode«Low Energy Device«Linear Electron Device«Luminous Electric Display«A«Componente«1
+O«C01Q02«Qual é a principal caracterı́stica que um LED possui que o distingue das lâmpadas incandescentes?«Pode emitir luz em qualquer cor«Consome mais energia elétrica«Tem uma vida útil curta«Emite luz quando uma corrente elétrica passa através dele«D«Componente«1
+O«C01Q03«Qual é o propósito do resistor em um circuito elétrico?«Para armazenar energia«Para aumentar a tensão«Para limitar a corrente elétrica«Para produzir luz«C«Componente«1
+O«C01Q04«Como os resistores são geralmente avaliados?«Por sua capacidade de armazenar carga«Por sua resistência em ohms«Pela quantidade de tensão que eles podem fornecer«Pelo seu brilho«B«Componente«1
+O«C01Q05«Em um circuito simples de LED, qual a função do resistor?«Limitar a corrente elétrica.«Armazenar energia elétrica para o circuito.«Dissipar energia elétrica através de Luz.«Dissipar energia elétrica através de frio.«A«Componente«1
+O«C01Q06«O terminal mais longo de um LED é denominado?«Ânodo«Cátodo«GND«Não possui denominação«A«Componente«1
+O«C01Q07«Qual a principal vantagem de se usar uma protoboard?«É também chamada de Placa de Cobre«Permite montar e testar circuitos rapidamente sem a necessidade de solda.«É uma placa utilizada para soldar componentes«É a denominação da Placa do Arduino«B«Componente«1
+O«C01Q08«Qual a função dos jumpers em um circuito com protoboard?«Fazer as conexões elétricas entre os componentes, transferindo energia e sinais.«Uma linguagem de programação«Um tipo de LED«Um microcontrolador de placa única«A«Componente«1
+O«C02Q01«O que é um Arduino?«Uma linguagem de programação«Um tipo de LED«Um microcontrolador de placa única«Um dispositivo de armazenamento de dados«C«Arduino«1
+O«C02Q02«Qual das seguintes opções é uma caracterı́stica do Arduino?«Alto custo«Possui seu próprio sistema operacional«Fácil de usar, com uma comunidade online ativa«Não suporta programação em C++«C«Arduino«1
+O«C02Q03«Qual a função do pino 'GND' na placa Arduino?«Não possui qualquer função«Sendo o terra, não deve ser ligado«Estabilizar a placa do Arduino«Serve como o ponto de referência de 0V para o circuito.«D«Arduino«1
+O«C02Q04«Qual o principal tipo de entrada de alimentação externa da placa Arduino Uno?«Um jack de alimentação de 2.1mm.«Cabo para ligação elétrica diretamente na tomada«Entrada HDMI«Entrada VGA«A«Arduino«1
+O«C02Q05«O que significa 'Arduino é uma plataforma de prototipagem de código aberto'?«Que o hardware e o software são gratuitos e podem ser modificados.«Mera propaganda pois a placa é fechada e não pode ser alterada«Qualquer pessoa pode criar um placa com o nome Arduino e vendê-la«Que o sistema operacional do Arduíno é um Linux«A«Arduino«1
+O«C03Q01«A Lei de Ohm afirma que a corrente em um circuito é igual a tensão dividida pela resistência. Qual é a fórmula correta?«I = V / R«I = R / V«V = I * R«R = V * I«A«Lei de Ohm«1
+O«C03Q02«Segundo a Lei de Ohm, se a tensão em um circuito é mantida constante e a resistência aumentar, o que acontecerá com a corrente?«Aumentará«Diminuirá«Permanecerá constante«Será interrompida completamente«B«Lei de Ohm«1
+O«C03Q03«Se você estiver usando um LED em um projeto com Arduino e quiser garantir que ele não queime, o que você deve incluir no circuito?«Um capacitor«Um resistor«Uma fonte de alta tensão«Um diodo retificador«B«Lei de Ohm«1
+O«C03Q04«Utilizando a Lei de Ohm, qual a resistência necessária para um LED que opera a 2V e requer 20mA se estiver conectado a uma fonte de 5V?«5 ohms«100 ohms«3 / 20«(5 - 2) / 0,02«D«Lei de Ohm«1
+O«C03Q05«Qual dessas NÃO é a fórmula da Lei de Ohm?«V=I*R«I=V/R«R=V/I.«V=T/R*2«D«Lei de Ohm«1
+O«C03Q06«Se um LED de 2.2V e 20mA for conectado a uma fonte de 5V, qual o valor do resistor necessário?«130 Ohms.«140 Ohms.«150 Ohms.«160 Ohms.«B«Lei de Ohm«1
+O«C03Q07«Se um resistor de 100 Ohms está com uma corrente de 0.05A, qual é a tensão sobre ele?«15V«35V«5V«25V«C«Lei de Ohm«1
+O«C04Q01«Qual é a função principal do Arduino em um projeto com sensores?«Armazenar energia elétrica«Atuar como um sensor de temperatura«Servir como uma plataforma de prototipagem eletrônica para a criação de projetos interativo«Converter sinais analógicos em digitais«C«Sensores«2
+O«C04Q06«Como é possı́vel calcular a resistência de um LDR?«Medindo a corrente e utilizando a Lei de Ohm«Medindo a tensão e utilizando a Lei de Ohm«Medindo a luz incidente diretamente no LDR«Medindo a temperatura ambiente«A«Sensores«2
+O«C04Q07«O que devemos fazer para ler um valor analógico de um sensor de temperatura LM34 com um Arduino?«Utilizar a função digitalRead()«Usar a função analogWrite()«Utilizar a função analogRead()«Usar a função digitalWrite()«C«Sensores«2
+O«C04Q08«Qual é o principal papel de um diodo em um circuito eletrônico?«Amplificar um sinal elétrico«Permitir a passagem de corrente elétrica em apenas uma direção«Converter energia elétrica em energia mecânica«Armazenar energia elétrica«B«Sensores«2
+O«C04Q09«Um resistor de 100 ohms é atravessado por uma corrente de 2A. Qual é a tensão através do resistor, de acordo com a Lei de Ohm?«50V«100V«200V«20V«D«Sensores«2
+O«C04Q010«Se o sensor LDR estiver em um ambiente escuro, o que acontece com sua resistência?«A resistência aumenta«A resistência diminui«A resistência permanece constante«A resistência torna-se 0«A«Sensores«2
+S«C04Q01«Dado um circuito com uma tensão de 10 volts e uma corrente de 2 amperes, qual é a resistência em Ohms?«5«Sensores«2
+S«C04Q02«Se temos uma resistência de 5 ohms e uma tensão de 20 volts, qual será a corrente que flui através do resistor em Ohms?«4«Sensores«2
+O«C04Q02«O que a sigla LDR representa?«Low-Drain Resistor«Light-Dependent Resistor«Long-Distance Radio«Load-Distribution Regulator«B«Sensores«2
+O«C04Q03«A famı́lia de sensores LM34, LM35 e LM355 são utilizados para medir qual tipo de grandeza fı́sica?«Intensidade de luz«Velocidade do vento«Temperatura«Pressão atmosférica«C«Sensores«2
+O«C04Q04«Qual é o princı́pio de funcionamento básico do sensor LM34?«Gera um campo magnético proporcional à temperatura medida«Sua resistência varia com a temperatura«Quando aquecido, emite luz com intensidade proporcional à temperatura«Produz uma tensão proporcional ao grau Fahrenheit da temperatura«D«Sensores«2
+O«C04Q05«Na famı́lia de sensores LM34, LM35 e LM355, um deles possui uma perna ”inativa”, qual é este componente?«LM34«LM35«LM355«Não existe tal perna ”inativa”nessa famı́lia de sensores«C«Sensores«2
+S«C05Q01«Uma corrente de 4 amperes passa por um resistor de 12 ohms. Qual é a tensão em todo o resistor (Escreva SOMENTE o valor, sem unidade de medida)?«48«Prática«1
+S«C05Q02«Dois resistores, um de 6 ohms e outro de 3 ohms, são conectados em série. Se a tensão no circuito é de 18 volts, qual é a corrente total no circuito (Escreva SOMENTE o valor, sem unidade de medida)?«2«Prática«1
+S«C05Q03«Dois resistores, um de 8 ohms e outro de 4 ohms, estão conectados em paralelo. Se aplicarmos uma tensão de 24 volts, qual é a corrente total através dos resistores (Escreva SOMENTE o valor, sem unidade de medida)?«9«Prática«1
+S«C05Q04«Um circuito é composto por três resistores em série de 2, 4 e 6 ohms. Se você aplicar uma tensão de 12 volts no circuito, qual será a corrente em cada resistor (Escreva SOMENTE o valor, sem unidade de medida)?«1«Prática«1
+S«C05Q05«Dado um circuito com uma tensão de 8 volts e uma corrente de 0.5 amperes, qual é a resistência (Escreva SOMENTE o valor, sem unidade de medida)?«16«Prática«1
+S«C05Q06«Se a tensão permanece constante em 10 volts e a resistência passa de 4 ohms para 2 ohms, qual será a nova corrente (Escreva SOMENTE o valor, sem unidade de medida)?«5«Prática«1
+S«C05Q07«Utilizando a Lei de Ohm, determine a potência dissipada por um resistor de 10 ohms com uma corrente de 3 amperes (Escreva SOMENTE o valor, sem unidade de medida).«90«Prática«1
+S«C05Q08«Um circuito contém um resistor desconhecido, uma tensão de 15 volts e uma corrente de 1 ampere. Qual é o valor do resistor (Escreva SOMENTE o valor, sem unidade de medida)?«15«Prática«1
+S«C05Q09«Considere que a resistência aumenta com a temperatura em materiais como o tungstênio, se um resistor de 10 ohms esquenta e sua resistência aumenta para 12 ohms, calcule o novo valor da corrente se a tensão for para 24 volts (Escreva SOMENTE o valor, sem unidade de medida)?«2«Prática«1
+S«C05Q10«Um fusı́vel é necessário para proteger um circuito com uma corrente máxima de 5 amperes e uma tensão de 50 volts. Qual deve ser a resistência mı́nima do fusı́vel para evitar que ele queime (Escreva SOMENTE o valor, sem unidade de medida)?«10«Prática«1
+S«C05Q11«Para diminuir a intensidade da luz produzida por um LED que opera a 2 volts e consome 20 mA, qual resistor deve ser adicionado em série para reduzir a corrente para 10 mA (Escreva SOMENTE o valor, sem unidade de medida)?«300«Prática«1
+S«C05Q12«Um potenciômetro é ajustado para fornecer uma resistência de 10 ohms em um circuito com uma tensão de 50 volts. Qual será a corrente através do potenciômetro (Escreva SOMENTE o valor, sem unidade de medida)?«5«Prática«1
+B«C06Q01«A sigla LED significa Light Emitting Diode (Diodo Emissor de Luz) e sua principal função é converter energia elétrica em energia luminosa.«A«Componente«1
+B«C06Q02«Diferente das lâmpadas incandescentes, o LED permite a passagem de corrente elétrica em ambos os sentidos, não possuindo polaridade definida (Anodo e Catodo).«B«Componente«1
+B«C06Q03«Em um circuito com Arduino, o resistor é utilizado em série com o LED para limitar a corrente elétrica, evitando que o componente queime por excesso de carga.«A«Componente«1
+B«C06Q04«A Protoboard (ou matriz de contatos) é uma ferramenta que permite a montagem de circuitos temporários através de conexões mecânicas, eliminando a necessidade de solda.«A«Componente«1
+B«C06Q05«O Arduino Uno é considerado um hardware de código fechado, o que significa que apenas a empresa oficial na Itália pode fabricar ou modificar o design de sua placa.«B«Arduino«1
+B«C06Q06«De acordo com a Lei de Ohm, se mantivermos a tensão constante e dobrarmos o valor da resistência, a corrente elétrica que circula pelo componente também irá dobrar.«B«Lei de Ohm«1
+B«C06Q07«O pino 'GND' (Ground) no Arduino representa o ponto de potencial zero (0V) do circuito, sendo essencial para fechar o caminho da corrente elétrica.«A«Arduino«1
+B«C06Q08«Um sensor LDR (Light Dependent Resistor) possui uma característica física onde sua resistência diminui quando o componente é exposto a uma alta intensidade de luz.«A«Sensores«1
+B«C06Q09«Para realizar a leitura de um sensor analógico, como o potenciômetro ou o sensor de temperatura LM35, devemos utilizar obrigatoriamente a função digitalRead() no código do Arduino.«B«Sensores«1
+B«C06Q10«Se um resistor de 220 Ohms for atravessado por uma corrente de 0,02A (20mA), a queda de tensão sobre ele será de exatamente 4,4 Volts.«A«Prática«1
+B«C06Q11«O terminal "Cátodo" de um LED deve ser conectado ao polo positivo da fonte de alimentação para que o componente emita luz corretamente.«B«Componente«1
+B«C06Q12«Um resistor de 1kΩ (um quilohm) equivale a uma resistência de 1000 Ohms.«A«Componente«1
+B«C06Q13«No Arduino Uno, os pinos analógicos (A0 a A5) podem ser usados para ler sensores que variam sua voltagem continuamente entre 0V e 5V.«A«Arduino«1
+B«C06Q14«Ao conectar dois resistores de 100 Ohms em série, a resistência equivalente total do conjunto será de 50 Ohms.«B«Lei de Ohm«1
+B«C06Q15«A função analogWrite() no Arduino é utilizada para simular uma saída analógica em pinos específicos através da técnica de PWM (Pulse Width Modulation).«A«Arduino«1
+B«C06Q16«O sensor de temperatura LM35 fornece uma saída de tensão linearmente proporcional à temperatura em graus Celsius, facilitando a conversão direta dos dados.«A«Sensores«1
+B«C06Q17«Se um circuito possui uma tensão de 12V e uma resistência de 4 Ohms, a corrente resultante será de 3 Amperes.«A«Prática«1
+B«C06Q18«Jumpers do tipo "Macho-Fêmea" são utilizados exclusivamente para conectar dois pontos distintos dentro de uma mesma protoboard.«B«Componente«1
+B«C06Q19«O capacitor é um componente eletrônico cuja principal função em um circuito é converter corrente contínua (CC) em corrente alternada (CA).«B«Componente«1
+B«C06Q20«Em um ambiente de total escuridão, a resistência de um sensor LDR tende a atingir seu valor máximo.«A«Sensores«1

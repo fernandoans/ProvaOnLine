@@ -8,7 +8,6 @@ import jprova.janela.MntComponents;
 
 import java.io.*;
 
-@SuppressWarnings("serial")
 public class Importar extends JFrame {
 
 	public Importar() {
@@ -26,27 +25,15 @@ public class Importar extends JFrame {
 		getContentPane().add(registro, null);
 		
 		JButton btArquivo = MntComponents.getJButtonTxt("Selecionar", 11, 100, 100, 30,
-			new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					selecionar();
-				}
-			});
+                e -> selecionar());
 		getContentPane().add(btArquivo, null);
 
-		JButton btCriar = MntComponents.getJButtonTxt("Criar", 180, 100, 100, 30, 
-			new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					criar();
-				}
-			});
+		JButton btCriar = MntComponents.getJButtonTxt("Criar", 180, 100, 100, 30,
+                e -> criar());
 		getContentPane().add(btCriar, null);
 
 		JButton btImportar = MntComponents.getJButtonTxt("Importar", 358, 100, 100, 30,
-			new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					importar();
-				}
-			});
+                e -> importar());
 		getContentPane().add(btImportar, null);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -57,19 +44,15 @@ public class Importar extends JFrame {
 		FileDialog dig = new FileDialog(this, "Selecionar Arquivo", 0);
 		dig.setDirectory("");
 		dig.setFile("*.csv");
-		dig.setFilenameFilter(new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return name.toLowerCase().endsWith(".csv");
-			}
-		});
+		dig.setFilenameFilter((dir, name) -> name.toLowerCase().endsWith(".csv"));
 		dig.setVisible(true);
-		String nomArq = (new StringBuilder(String.valueOf(dig.getDirectory())))
-				.append(dig.getFile()).toString();
+		String nomArq = dig.getDirectory() +
+                dig.getFile();
 		if ((new File(nomArq)).exists())
 			arquivo.setText(nomArq);
 		else
 			JOptionPane.showMessageDialog(this,
-					"Erro: Arquivo n\343o Encontrado", "Erro", 0);
+					"Erro: Arquivo n\343o Encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
 	}
 
 	private void criar() {
@@ -85,25 +68,24 @@ public class Importar extends JFrame {
 			String nomArq = arquivo.getText();
 			TratarArquivo banco = new TratarArquivo();
 			int linhaImp = banco.importarDados(nomArq);
-			JOptionPane.showMessageDialog(this, (new StringBuilder("Foram importadas "))
-				.append(linhaImp).append(" linhas.")
-				.toString());
+			JOptionPane.showMessageDialog(this, "Foram importadas " +
+                    linhaImp + " linhas.");
 			verificarRegistros();
 		} else {
 			JOptionPane.showMessageDialog(this,
-					"Erro: Arquivo n\343o Encontrado", "Erro", 0);
+					"Erro: Arquivo n\343o Encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	private void verificarRegistros() {
-		registro.setText((new StringBuilder("Registros: "))
-			.append((new TratarArquivo()).totalRegistro()).toString());
+		registro.setText("Registros: " +
+                (new TratarArquivo()).totalRegistro());
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		new Importar();
 	}
 
-	private JLabel arquivo;
-	private JLabel registro;
+	private final JLabel arquivo;
+	private final JLabel registro;
 }
