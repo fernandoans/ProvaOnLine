@@ -58,7 +58,7 @@ def gerar_listagem(diretorio: str) -> List[str]:
     return lista_alunos
 
 if __name__ == "__main__":
-    DIRETORIO_PDFS = "./robotica"
+    DIRETORIO_PDFS = "./JavaRes"
     if not os.path.exists(DIRETORIO_PDFS):
         print(f"O diretório '{DIRETORIO_PDFS}' não existe.")
     else:

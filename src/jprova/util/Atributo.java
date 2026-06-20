@@ -21,7 +21,7 @@ public final class Atributo {
 
 	// Autor e Versao atual
 	public static final String COPYRIGHT = "2026 \251 Fernando Anselmo";
-	public static final String CFVERSAO = "Vers\343o 2.6";
+	public static final String CFVERSAO = "Vers\343o 2.7";
 	public static final String OPCAO_E = "Todas as questões acima.";
 	public static final String OPCAO_F = "Nenhuma das questões acima.";
 	public static final String OPCAO_VERDADEIRO = "Verdadeiro";

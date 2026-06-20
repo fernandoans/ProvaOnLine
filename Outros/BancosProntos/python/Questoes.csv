@@ -23,6 +23,7 @@ O«C01Q07«Qual é a função em Python que gera um intervalo de números?«rang
 O«C01Q08«Qual palavra-chave em Python é usada para definir uma função?«func«def«function«new«B«Básico«1
 O«C01Q09«Como você pode verificar o tipo de uma variável chamada `numero`?«type(numero)«typeof numero«var_type(numero)«check(numero)«A«Básico«1
 O«C01Q10«Em Python, qual operador é usado para calcular o resto da divisão?«%«/«//«&«A«Básico«1
+% ------------------------------------------------------------------------
 O«C02Q01«Qual é a diferença entre uma lista e uma tupla?«As listas são ordenadas e as tuplas não«As tuplas são ordenadas e as listas não«As listas são mutáveis e as tuplas não«As tuplas são mutáveis e as listas não«C«Estrutura de Dados«1
 O«C02Q02«Como podemos adicionar um elemento em uma lista?«lista.add(elemento)«lista.append(elemento)«lista.insert(elemento)«lista.push(elemento)«B«Estrutura de Dados«1
 O«C02Q03«Qual a saída do seguinte código: print(type({1,2,3}))?«<class ‘list’>«<class ‘tuple’>«<class ‘set’>«<class ‘dict’>«C«Estrutura de Dados«1
@@ -33,6 +34,7 @@ O«C02Q07«Como você pode criar uma cópia de uma lista em Python para evitar a
 O«C02Q08«Em Python, que tipo de dados é usado para armazenar dados de chave e valor?«Lista«Tupla«Conjunto«Dicionário«D«Estrutura de Dados«1
 O«C02Q09«Qual é a sintaxe correta para criar um conjunto vazio em Python?«set = ()«set = []«set = {}«set = set()«D«Estrutura de Dados«1
 O«C02Q10«Como podemos combinar duas listas em Python?«Usar + ou .extend()«Usar .merge()«Usar .join()«Usar .combine()«A«Estrutura de Dados«1
+% ------------------------------------------------------------------------
 O«C03Q01«No Python não existe a estrutura switch, esta foi substituída por:«if-elif-else«lambda«case«select«A«Comandos«1
 O«C03Q02«Qual o comando é usado para testar uma condição lógica e executar um determinado bloco de código com base nesta condição?«if«else«select«switch«A«Comandos«1
 O«C03Q03«Qual comando é responsável por executar um bloco de código repetidamente com base em uma condicional?«for«loop«do«while«D«Comandos«1
@@ -43,16 +45,19 @@ O«C03Q07«Qual comando é usado para capturar e tratar exceções em Python?«t
 O«C03Q08«Qual o comando usado para finalizar uma função e retornar um valor?«end«return«exit«stop«B«Comandos«1
 O«C03Q09«Qual a declaração utilizada para realizar algum código independentemente do resultado dos blocos try e except?«finally«always«default«confirm«A«Comandos«1
 O«C03Q10«Em uma função como fazemos um duplo retorno para as variáveis "a" e "b"?«return a:b«return a,b«return a e na linha seguinte return b«result a b«B«Comandos«1
+% ------------------------------------------------------------------------
 O«C04Q01«Como podemos definir uma função em python?«def nome():«function nome():«nome = function():«nome = func():«A«Funções«1
 O«C04Q02«O que é uma função lambda?«Uma função que pode ter qualquer número de argumentos mas apenas uma expressão«Uma função que não tem nome«Uma função que é definida sem a palavra-chave def«Uma função que pode ser definida na linha da instrução«E«Funções«1
 O«C04Q03«Como podemos obter a data e hora atual em Python a partir da importação da biblioteca datetime?«datetime.datetime.now()«datetime.now()«now()«date.now()«A«Funções«1
 O«C04Q04«Qual a utilidade da função Map em Python?«Mapeia uma função para cada elemento de uma lista«Mapeia uma função para cada chave de um dicionário«Mapeia uma função para cada elemento de um conjunto«Mapeia uma função para cada elemento de uma tupla«A«Funções«1
 O«C04Q05«O que é list comprehension em Python?«Uma maneira concisa de criar listas.«Uma maneira de aplicar uma função a cada elemento de uma lista.«Uma maneira de filtrar elementos de uma lista«Uma forma de reduzir um lista a um único elemento«A«Funções«1
+% ------------------------------------------------------------------------
 O«C05Q01«Como criar um arquivo de texto em Python?«open(‘nomArq.txt’, ‘w’)«create(‘nomArq.txt’, ‘w’)«file(‘nomArq.txt’, ‘w’)«new(‘nomArq.txt’, ‘w’)«A«Arquivos«1
 O«C05Q02«Como ler um arquivo de texto em Python?«read(‘nomArq.txt’, ‘r’)«open(‘nomArq.txt’, ‘r’).read()«file(‘nomArq.txt’, ‘r’).read()«new(‘nomArq.txt’, ‘r’).read()«B«Arquivos«1
 O«C05Q03«Como gravar um arquivo de texto em Python?«write(‘nomArq.txt’, ‘dados’)«open(‘nomArq.txt’, ‘w’).write(‘dados’)«file(‘nomArq.txt’, ‘w’).write(‘dados’)«new(‘nomArq.txt’, ‘w’).write(‘dados’)«B«Arquivos«1
 O«C05Q04«Qual o comando usado para fechar um arquivo em Python?«break()«continue()«stop()«close()«D«Arquivos«1
 O«C05Q05«Qual a utilidade do comando try em Python?«Tenta executar um bloco de código e para se encontrar um erro.«Tenta executar um bloco de código e ignora os erros.«Tenta executar um bloco de código e levanta uma exceção se encontrar um erro.«Tenta executar um bloco de código e aborta o programa se encontrar um erro.«C«Comandos«1
+% ------------------------------------------------------------------------
 S«C06Q01«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = 2 %SL% for a in range(1,10): %SL% %TB% if (a % 2 == 0): %SL% %TB% %TB% c += 1 %SL% print(c)«6«Programação«1
 S«C06Q02«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = -2 %SL% for a in range(1,10): %SL% %TB% if (a % 2 == 0): %SL% %TB% %TB% c += 1 %SL% print(c)«2«Programação«1
 S«C06Q03«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% def normal(n): %SL% %TB% if n == 0: %SL% %TB% %TB% return "Ola" %SL% print(normal(0))«Ola«Programação«1
@@ -62,7 +67,8 @@ S«C06Q06«Qual será o resultado do seguinte código (Use EC se achar que é er
 S«C06Q07«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% def x(): %SL% %TB% a = 2 %SL% %TB% if (a == 2): %SL% %TB% %TB% print("Foo") %SL% %TB% %TB% return %SL% %TB% print("Bar") %SL% x()«Foo«Programação«1
 S«C06Q08«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = 1 %SL% for a in range(2,10,3): %SL% %TB% if (a % 2 != 0): %SL% %TB% %TB% c += 1 %SL% print(c)«2«Programação«1
 S«C06Q09«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = -2 %SL% for a in range(2,10,2): %SL% %TB% if (a % 2 == 0): %SL% %TB% %TB% c += 1 %SL% print(c)«2«Programação«1
-S«C06Q10«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = -2 %SL% for a in range(2,10,2): %SL% %TB% if (a % 2 != 0): %SL% %TB% %TB% c += 1 %SL% print(c)«-2«Programação«1
+S«C06Q10«Qual será o resultado do seguinte código (Use EC se achar que é erro de compilação ou EE para erro de execução): %SL% c = -2 %SL% for a in range(2,10,2): %SL% %TB% if (a % 2 != 0): %SL% %TB% %TB% c += 1 %SL% print(c)«2«Programação«1
+% ------------------------------------------------------------------------
 B«C07Q01«Em Python, ao utilizar a função input(), o valor recebido é sempre tratado como uma string, mesmo que o usuário digite um valor numérico.«A«Básico«1
 B«C07Q02«Em Python, ao utilizar a função input(), o valor recebido é sempre tratado como o tipo da entrada, por exemplo se o usuário digitar um valor numérico inteiro a valor recebido será 'int'.«B«Básico«1
 B«C07Q03«Uma list (lista) é uma estrutura de dados imutável, ou seja, após criada, não é possível alterar os seus valores internos.«B«Estrutura de Dados«1
@@ -83,3 +89,30 @@ B«C07Q17«O método .append() é utilizado para adicionar um novo elemento no i
 B«C07Q18«O operador lógico 'and' só retorna True se todas as condições comparadas forem verdadeiras ao mesmo tempo.«A«Básico«1
 B«C07Q19«Em Python, é permitido começar o nome de uma variável com um underscore, por exemplo: %SL% _valor = 50«A«Básico«1
 B«C07Q20«Em Python, é permitido começar o nome de uma variável com um número, por exemplo: %SL% 50valor = 50«B«Básico«1
+% ------------------------------------------------------------------------
+B«C08Q01«Em Python, o método construtor de uma classe é nomeado como __init__ e sua principal função é inicializar os atributos do objeto assim que for criado.«A«Básico«2
+B«C08Q02«O comando with open("dados.txt", "r") as arquivo: é o mais recomendado pois garante o fechamento do arquivo de forma automática, mesmo se ocorrer uma exceção dentro do bloco.«A«Arquivos«2
+B«C08Q03«Na estrutura de proteção try-except, a cláusula else associada só será executada se uma exceção for capturada durante a execução do código.«B«Comandos«2
+B«C08Q04«A função nativa input() analisa o conteúdo digitado e retorna um tipo int ou float caso o usuário digite exclusivamente caracteres numéricos.«B«Funções«2
+B«C08Q05«Para obter simultaneamente a data e a hora atualizados do sistema com o módulo datetime, utiliza-se a chamada datetime.date.today().«B«Funções«2
+B«C08Q06«A estrutura de repetição while repete a execução de um bloco de código de maneira condicional enquanto uma determinada expressão lógica for avaliada como Verdadeira.«A«Comandos«2
+B«C08Q07«O primeiro parâmetro de um método de instância dentro de uma classe deve ser nomeado obrigatoriamente como self, sendo um erro de sintaxe fatal usar qualquer outro nome.«A«Básico«2
+B«C08Q08«O modo de abertura "w" na função open() abre o arquivo para escrita, limpa e sobrescreve totalmente o conteúdo preexistente se o arquivo já existir.«A«Arquivos«2
+B«C08Q09«Para encadear condições intermediárias em uma instrução de decisão, utiliza-se a palavra-chave composta elseif, de modo idêntico a linguagens como Java ou C++.«Comandos«Básico«2
+B«C08Q10«A instrução for i in range(2, 10, 2): fará com que a variável i assuma os valores 2, 4, 6, 8 e 10 ao longo das iterações do laço.«B«Comandos«2
+B«C08Q11«O método readlines() de um objeto de arquivo lê todo o conteúdo restante e o retorna como uma única string contendo todas as quebras de linha \n.«B«Arquivos«2
+B«C08Q12«É possível definir múltiplos blocos except para um mesmo bloco try, permitindo que o programa trate diferentes tipos de exceções (como ValueError e FileNotFoundError) de formas específicas.«A«Comandos«2
+B«C08Q13«Se uma função ou método não contiver uma instrução return explícita em seu corpo, sua execução retornará implicitamente o valor especial None.«A«Funções«2
+B«C08Q14«Parâmetros em funções podem receber valores padrão (default). Caso um argumento não seja passado na chamada da função, o valor padrão definido será utilizado.«A«Funções«2
+B«C08Q15«O método masctime() da classe datetime serve para formatar um objeto do tipo datetime, com base em uma máscara de formatação fornecida.«B«Funções«2
+B«C08Q16«A indentação do código é apenas uma recomendação visual de organização estética e não interfere na definição do escopo dos blocos de controle.«B«Básico«2
+B«C08Q17«O conceito de herança em Python permite que uma classe filha herde métodos e atributos de uma classe pai, sendo declarada passando a classe pai como argumento entre parênteses logo após o nome da classe filha.«A«Básico«2
+B«C08Q18«Para exibir múltiplos valores em uma única linha usando o comando print(), o desenvolvedor deve obrigatoriamente concatenar todos os elementos em uma única string usando o operador +.«B«Funções«2
+B«C08Q19«O comando break interrompe imediatamente a execução do laço de repetição atual (for ou while), direcionando o fluxo do programa para a primeira linha de código localizada após o bloco do laço.«A«Comandos«2
+B«C08Q20«O bloco finally dentro de uma estrutura try-except é de execução obrigatória apenas se nenhuma exceção for lançada no bloco try. Se um erro acontecer, o finally é ignorado.«B«Comandos«2
+B«C08Q21«A classe timedelta da biblioteca datetime é utilizada para representar a duração ou a diferença entre dois pontos no tempo, permitindo realizar operações matemáticas como somar dias a uma data.«AB«Funções«2
+B«C08Q22«Quando abrimos um arquivo utilizando o modo "a", o ponteiro de escrita é posicionado no início do arquivo, sobrescrevendo os primeiros caracteres conforme novos dados são gravados.«B«Arquivos«2
+B«C08Q23«Uma função pode retornar mais de um valor simultaneamente separados por vírgula (ex: return x, y). «A«Funções«2
+B«C08Q24«Em uma classe usamos a palavra self para indicar coisas do próprio objeto e o método super() para indicar referência a classe pai.«A«Básico«2
+B«C08Q25«O comando print("Resultado:", valor, sep="-") modifica o comportamento padrão de separação, exibindo o texto e a variável separados por um hífen em vez de um espaço em branco.«A«Funções«2
+B«C08Q26«Ao utilizar o laço for, só é possível iterar sobre sequências numéricas geradas pela função range(), não sendo permitido iterar diretamente sobre estruturas de dados ou strings.«B«Comandos«2

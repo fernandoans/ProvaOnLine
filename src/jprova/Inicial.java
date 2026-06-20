@@ -141,77 +141,76 @@ public class Inicial extends JFrame implements Runnable {
 
 	private void montaBinarias() {
 		// Botões de Respostas
-		opcoes = new ButtonGroup();
-		radOpcA = MntComponents.getJRadioButton(Atributo.OPCAO_VERDADEIRO, 0, 0, 200, 30,
+		opcoesBin = new ButtonGroup();
+		radBinA = MntComponents.getJRadioButton(Atributo.OPCAO_VERDADEIRO, 0, 0, 200, 30,
 				e -> marcarOpcao("A"));
-		radOpcA.setFont(new Font(FONTE, Font.BOLD, 16));
-		opcoes.add(radOpcA);
-		pnBinarias.add(radOpcA, null);
+		radBinA.setFont(new Font(FONTE, Font.BOLD, 16));
+		opcoesBin.add(radBinA);
+		pnBinarias.add(radBinA, null);
 
-		radOpcB = MntComponents.getJRadioButton(Atributo.OPCAO_FALSO, 0, 60, 200, 30,
+		radBinB = MntComponents.getJRadioButton(Atributo.OPCAO_FALSO, 0, 60, 200, 30,
 				e -> marcarOpcao("B"));
-		radOpcB.setFont(new Font(FONTE, Font.BOLD, 16));
-		opcoes.add(radOpcB);
-		pnBinarias.add(radOpcB, null);
-
+		radBinB.setFont(new Font(FONTE, Font.BOLD, 16));
+		opcoesBin.add(radBinB);
+		pnBinarias.add(radBinB, null);
 	}
 
 	private void montaObjetivas() {
-		txaOpcA = MntComponents.getJTextArea();
-		txaOpcA.setFont(new Font(FONTE, Font.BOLD, 16));
-		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcA, 100, 0, 720, 50), null);
+		txaObjA = MntComponents.getJTextArea();
+		txaObjA.setFont(new Font(FONTE, Font.BOLD, 16));
+		pnObjetivas.add(MntComponents.getJScrollPane(txaObjA, 100, 0, 720, 50), null);
 
-		txaOpcB = MntComponents.getJTextArea();
-		txaOpcB.setFont(new Font(FONTE, Font.BOLD, 16));
-		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcB, 100, 60, 720, 50), null);
+		txaObjB = MntComponents.getJTextArea();
+		txaObjB.setFont(new Font(FONTE, Font.BOLD, 16));
+		pnObjetivas.add(MntComponents.getJScrollPane(txaObjB, 100, 60, 720, 50), null);
 
-		txaOpcC = MntComponents.getJTextArea();
-		txaOpcC.setFont(new Font(FONTE, Font.BOLD, 16));
-		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcC, 100, 120, 720, 50), null);
+		txaObjC = MntComponents.getJTextArea();
+		txaObjC.setFont(new Font(FONTE, Font.BOLD, 16));
+		pnObjetivas.add(MntComponents.getJScrollPane(txaObjC, 100, 120, 720, 50), null);
 
-		txaOpcD = MntComponents.getJTextArea();
-		txaOpcD.setFont(new Font(FONTE, Font.BOLD, 16));
-		pnObjetivas.add(MntComponents.getJScrollPane(txaOpcD, 100, 180, 720, 50), null);
+		txaObjD = MntComponents.getJTextArea();
+		txaObjD.setFont(new Font(FONTE, Font.BOLD, 16));
+		pnObjetivas.add(MntComponents.getJScrollPane(txaObjD, 100, 180, 720, 50), null);
 
-		JLabel txaOpcE = MntComponents.getJLabel(Atributo.OPCAO_E, 100, 240, 720, 20);
-		txaOpcE.setFont(new Font(FONTE, Font.BOLD, 16));
-		pnObjetivas.add(txaOpcE, null);
+		JLabel txaObjE = MntComponents.getJLabel(Atributo.OPCAO_E, 100, 240, 720, 20);
+		txaObjE.setFont(new Font(FONTE, Font.BOLD, 16));
+		pnObjetivas.add(txaObjE, null);
 
-		JLabel txaOpcF = MntComponents.getJLabel(Atributo.OPCAO_F, 100, 270, 720, 20);
-		txaOpcF.setFont(new Font(FONTE, Font.BOLD, 16));
-		pnObjetivas.add(txaOpcF, null);
+		JLabel txaObjF = MntComponents.getJLabel(Atributo.OPCAO_F, 100, 270, 720, 20);
+		txaObjF.setFont(new Font(FONTE, Font.BOLD, 16));
+		pnObjetivas.add(txaObjF, null);
 
 		// Botões de Respostas
-		opcoes = new ButtonGroup();
-		radOpcA = MntComponents.getJRadioButton("Op\347\343o A:", 0, 0, 90, 30,
+		opcoesObj = new ButtonGroup();
+		radObjA = MntComponents.getJRadioButton("Op\347\343o A:", 0, 0, 90, 30,
                 e -> marcarOpcao("A"));
-		opcoes.add(radOpcA);
-		pnObjetivas.add(radOpcA, null);
+		opcoesObj.add(radObjA);
+		pnObjetivas.add(radObjA, null);
 		
-		radOpcB = MntComponents.getJRadioButton("Op\347\343o B:", 0, 60, 90, 30,
+		radObjB = MntComponents.getJRadioButton("Op\347\343o B:", 0, 60, 90, 30,
                 e -> marcarOpcao("B"));
-		opcoes.add(radOpcB);
-		pnObjetivas.add(radOpcB, null);
+		opcoesObj.add(radObjB);
+		pnObjetivas.add(radObjB, null);
 		
-		radOpcC = MntComponents.getJRadioButton("Op\347\343o C:", 0, 120, 90, 30,
+		radObjC = MntComponents.getJRadioButton("Op\347\343o C:", 0, 120, 90, 30,
                 e -> marcarOpcao("C"));
-		opcoes.add(radOpcC);
-		pnObjetivas.add(radOpcC, null);
+		opcoesObj.add(radObjC);
+		pnObjetivas.add(radObjC, null);
 		
-		radOpcD = MntComponents.getJRadioButton("Op\347\343o D:", 0, 180, 90, 30,
+		radObjD = MntComponents.getJRadioButton("Op\347\343o D:", 0, 180, 90, 30,
                 e -> marcarOpcao("D"));
-		opcoes.add(radOpcD);
-		pnObjetivas.add(radOpcD, null);
+		opcoesObj.add(radObjD);
+		pnObjetivas.add(radObjD, null);
 
-		radOpcE = MntComponents.getJRadioButton("Op\347\343o E:", 0, 240, 90, 20,
+		radObjE = MntComponents.getJRadioButton("Op\347\343o E:", 0, 240, 90, 20,
                 e -> marcarOpcao("E"));
-		opcoes.add(radOpcE);
-		pnObjetivas.add(radOpcE, null);
+		opcoesObj.add(radObjE);
+		pnObjetivas.add(radObjE, null);
 		
-		radOpcF = MntComponents.getJRadioButton("Op\347\343o F:", 0, 270, 90, 20,
+		radObjF = MntComponents.getJRadioButton("Op\347\343o F:", 0, 270, 90, 20,
                 e -> marcarOpcao("F"));
-		opcoes.add(radOpcF);
-		pnObjetivas.add(radOpcF, null);
+		opcoesObj.add(radObjF);
+		pnObjetivas.add(radObjF, null);
 	}
 
 	private void antQuestao() {
@@ -231,7 +230,8 @@ public class Inicial extends JFrame implements Runnable {
 	private void mostrarQuestao() {
 		if (!questoes.isEmpty()) {
 			Questao qst = questoes.get(qstAtual - 1);
-			
+			chkMarcar.setSelected(qst.isMarcar());
+
 			labQuestao.setText("Quest\343o " + Atributo.colocaZero(qstAtual, 3) +
                     " de " + Atributo.colocaZero(qstTotal, 3));
 			txaPerg.setText(qst.getPergunta());
@@ -244,55 +244,59 @@ public class Inicial extends JFrame implements Runnable {
 
 			if (qst.getTipo() == 'O') {
 				scrPerg.setBounds(new Rectangle(110, 110, 720, 100));
-
-				txaOpcA.setText(qst.getOpcaoA());
-				txaOpcA.setCaretPosition(0);
-				txaOpcB.setText(qst.getOpcaoB());
-				txaOpcB.setCaretPosition(0);
-				txaOpcC.setText(qst.getOpcaoC());
-				txaOpcC.setCaretPosition(0);
-				txaOpcD.setText(qst.getOpcaoD());
-				chkMarcar.setSelected(qst.isMarcar());
-				opcoes.clearSelection();
-				if (qst.getOpcaoEscolhida() != null && !qst.getOpcaoEscolhida().isEmpty() && qst.getTipo() == 'O') {
+				txaObjA.setText(qst.getOpcaoA());
+				txaObjA.setCaretPosition(0);
+				txaObjB.setText(qst.getOpcaoB());
+				txaObjB.setCaretPosition(0);
+				txaObjC.setText(qst.getOpcaoC());
+				txaObjC.setCaretPosition(0);
+				txaObjD.setText(qst.getOpcaoD());
+				txaObjD.setCaretPosition(0);
+                // Verifica resposta escolhida
+				if (qst.getOpcaoEscolhida() != null
+						&& !qst.getOpcaoEscolhida().isEmpty()) {
 					switch (qst.getOpcaoEscolhida().charAt(0)) {
-						case 65: // 'A'
-							radOpcA.setSelected(true);
+						case 'A':
+							radObjA.setSelected(true);
 							break;
-						case 66: // 'B'
-							radOpcB.setSelected(true);
+						case 'B':
+							radObjB.setSelected(true);
 							break;
-						case 67: // 'C'
-							radOpcC.setSelected(true);
+						case 'C':
+							radObjC.setSelected(true);
 							break;
-						case 68: // 'D'
-							radOpcD.setSelected(true);
+						case 'D':
+							radObjD.setSelected(true);
 							break;
-						case 69: // 'E'
-							radOpcE.setSelected(true);
+						case 'E':
+							radObjE.setSelected(true);
 							break;
-						case 70: // 'F'
-							radOpcF.setSelected(true);
+						case 'F':
+							radObjF.setSelected(true);
 							break;
+						default:
+							opcoesObj.clearSelection();
 					}
+				} else {
+					opcoesObj.clearSelection();
 				}
 			} else if (qst.getTipo() == 'B') {
 				scrPerg.setBounds(new Rectangle(110, 110, 720, 300));
-				txaOpcA.setText(qst.getOpcaoA());
-				txaOpcA.setCaretPosition(0);
-				txaOpcB.setText(qst.getOpcaoB());
-				txaOpcB.setCaretPosition(0);
-				chkMarcar.setSelected(qst.isMarcar());
-				opcoes.clearSelection();
-				if (qst.getOpcaoEscolhida() != null && !qst.getOpcaoEscolhida().isEmpty() && qst.getTipo() == 'B') {
+				// Verifica resposta escolhida
+				if (qst.getOpcaoEscolhida() != null
+						&& !qst.getOpcaoEscolhida().isEmpty()) {
 					switch (qst.getOpcaoEscolhida().charAt(0)) {
-						case 65: // 'A'
-							radOpcA.setSelected(true);
+						case 'A':
+							radBinA.setSelected(true);
 							break;
-						case 66: // 'B'
-							radOpcB.setSelected(true);
+						case 'B':
+							radBinB.setSelected(true);
 							break;
+						default:
+							opcoesBin.clearSelection();
 					}
+				} else {
+					opcoesBin.clearSelection();
 				}
 			} else if (qst.getTipo() == 'S') {
 				scrPerg.setBounds(new Rectangle(110, 110, 720, 330));
@@ -398,26 +402,7 @@ public class Inicial extends JFrame implements Runnable {
 		new Inicial();
 	}
 
-	private JPanel pnObjetivas;
-	private JPanel pnSubjetivas;
-	private JPanel pnBinarias;
-    private JTextField txSubjetiva;
 	private JTextField edtIrQuestao;
-	private JTextArea txaPerg;
-	private JScrollPane scrPerg;
-	// Opcoes Objetivas
-	private JTextArea txaOpcA;
-	private JTextArea txaOpcB;
-	private JTextArea txaOpcC;
-	private JTextArea txaOpcD;
-	private ButtonGroup opcoes;
-	private JRadioButton radOpcA;
-	private JRadioButton radOpcB;
-	private JRadioButton radOpcC;
-	private JRadioButton radOpcD;
-	private JRadioButton radOpcE;
-	private JRadioButton radOpcF;
-	// ----
 	private JLabel labQuestao;
     private JCheckBox chkMarcar;
 	private JLabel labTempo;
@@ -428,6 +413,32 @@ public class Inicial extends JFrame implements Runnable {
 	private final int qstTotal;
 	private final List<Questao> questoes;
     private boolean parar;
+
+	// Variáveis exclusivas para as questões Subjetivas
+	private JPanel pnSubjetivas;
+	private JTextField txSubjetiva;
+	private JTextArea txaPerg;
+	private JScrollPane scrPerg;
+	// Variáveis exclusivas para as questões Objetivas
+	private JPanel pnObjetivas;
+	private JTextArea txaObjA;
+	private JTextArea txaObjB;
+	private JTextArea txaObjC;
+	private JTextArea txaObjD;
+	private ButtonGroup opcoesObj;
+	private JRadioButton radObjA;
+	private JRadioButton radObjB;
+	private JRadioButton radObjC;
+	private JRadioButton radObjD;
+	private JRadioButton radObjE;
+	private JRadioButton radObjF;
+	// Variáveis exclusivas para as questões Binárias
+	private JPanel pnBinarias;
+	private JTextArea txaBinA;
+	private JTextArea txaBinB;
+	private ButtonGroup opcoesBin;
+	private JRadioButton radBinA;
+	private JRadioButton radBinB;
 
 	private final String FONTE = "Arial";
 }
